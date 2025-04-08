@@ -29,7 +29,13 @@
     <BaseCard v-if="!isActive" @click="toggleActive" class="cursor-pointer">
       <q-card-section class="flex items-center">
         <q-avatar>
-          <img :src="authStore.user.photoURL" />
+          <img
+            :src="
+              authStore.user
+                ? authStore.user?.photoURL
+                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd2NAjCcjjk7ac57mKCQvgWVTmP0ysxnzQnQ&s'
+            "
+          />
         </q-avatar>
         <div class="text-grey-6 q-ml-md">댓글을 작성해보세요.</div>
       </q-card-section>
@@ -49,7 +55,7 @@ import { useQuasar } from 'quasar';
 import { useRoute } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
 import { useAsyncState } from '@vueuse/core';
-import { addComment, getComments } from 'src/services';
+import { addComment } from 'src/services';
 import CommentList from 'src/components/apps/comment/CommentList.vue';
 import BaseCard from 'src/components/base/BaseCard.vue';
 import { validateRequired } from 'src/utils/validate-rules';

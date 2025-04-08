@@ -53,7 +53,7 @@
           </div>
         </q-card>
       </q-card-section>
-      <div v-if="isLoading" clss="flex flex-center">loading...</div>
+      <div v-if="isLoading" class="flex flex-center q-mt-sm">loading...</div>
       <q-list padding>
         <q-item
           v-for="{ name, count } in postTags"
