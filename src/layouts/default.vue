@@ -13,20 +13,20 @@
         <q-space />
         <q-btn stretch flat label="Home" to="/" />
         <q-btn stretch flat label="취미" to="/hobby" />
-        <q-btn
+        <!-- <q-btn
           stretch
           flat
           label="도와줘 GPT"
           href="https://chatgpt.com/"
           target="_blank"
-        />
-        <q-btn
+        /> -->
+        <!-- <q-btn
           stretch
           flat
           label="유튜브"
           href="https://www.youtube.com/"
           target="_blank"
-        />
+        /> -->
         <q-separator vertical class="q-my-md q-mr-md" />
         <q-btn
           v-if="!authStore.isAuthenticated"

@@ -1,0 +1,1 @@
+import{u as e,aK as o,o as a,i as r,at as m}from"./index.73de013b.js";import{j as c}from"./post.055bc757.js";import{_ as n}from"./PostList.3e9b9cf8.js";import"./PostIcon.3dd0017d.js";const h={__name:"bookmark",setup(u){const t=e(),{state:s}=o(()=>c(t.uid));return(i,_)=>(a(),r(n,{items:m(s)},null,8,["items"]))}};export{h as default};

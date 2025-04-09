@@ -28,6 +28,7 @@
     "firebase": "^11.4.0",
     "instantsearch.css": "^8.5.1",
     "pinia": "^2.1.3",
+    "pokemontcgsdk": "^2.0.0",
     "quasar": "^2.12.0",
     "uuid": "^11.1.0",
     "vue": "^3.3.4",

@@ -27,7 +27,13 @@ module.exports = configure(function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
-    boot: ['firebase', 'error-handler', 'navigation-guards', 'algoliasearch'],
+    boot: [
+      'firebase',
+      'error-handler',
+      'navigation-guards',
+      'algoliasearch',
+      'pokemon-tcg',
+    ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ['app.scss'],

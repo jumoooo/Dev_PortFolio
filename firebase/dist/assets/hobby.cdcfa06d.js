@@ -1,1 +1,0 @@
-import{Q as e}from"./QPage.24030e32.js";import{b as o}from"./route-block.1e6a8648.js";import{_ as t}from"./plugin-vue_export-helper.21dcd24c.js";import{o as c,i as a}from"./index.44184293.js";const r={};function f(n,s){return c(),a(e)}typeof o=="function"&&o(r);var b=t(r,[["render",f]]);export{b as default};

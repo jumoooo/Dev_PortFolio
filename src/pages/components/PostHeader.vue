@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-conter q-mb-lg">
+  <div class="flex items-center q-mb-lg">
     <div class="text-h5">{{ category }}</div>
     <q-space />
     <q-tabs
