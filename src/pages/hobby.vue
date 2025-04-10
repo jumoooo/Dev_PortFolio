@@ -7,13 +7,16 @@
         v-model:cardName="cardName"
         @enterPress="searchCard"
       />
-      <q-list class="flex" bordered separator>
-        <template v-for="card of cardList" :key="card.id">
-          <pokeCard :image-url="card.images.small" style="width: 20%" />
-        </template>
-      </q-list>
     </div>
 
+    <q-list class="flex" bordered separator>
+      <pokeCard
+        v-for="card of cardList"
+        :key="card.id"
+        :image-url="card.images.small"
+        style="width: 20%"
+      />
+    </q-list>
     <div class="q-pa-lg flex flex-center">
       <q-pagination
         v-model="currentIdx"
@@ -31,6 +34,7 @@
 </template>
 
 <script>
+// 페이지 기본값
 const defaultPageSize = 15;
 const defaultCurrentIdx = 1;
 const defaultCardName = '';
@@ -39,10 +43,11 @@ const defaultMaxCount = 0;
 
 <script setup>
 import { ref, watch } from 'vue';
-import pokeCard from './hobby/components/pokeCard.vue';
 import { usePokeCard } from 'src/composables/usePokeCard';
 import { useAsyncState } from '@vueuse/core';
 import { useQuasar } from 'quasar';
+
+import pokeCard from './hobby/components/pokeCard.vue';
 import pokeHeader from './hobby/components/pokeHeader.vue';
 
 const { getPokemonCards } = usePokeCard();
@@ -54,7 +59,7 @@ const maxCount = ref(defaultMaxCount);
 const pageSize = ref(defaultPageSize);
 
 const $q = useQuasar();
-// Mimikyu
+
 const { execute, isLoading } = useAsyncState(
   () =>
     getPokemonCards({
