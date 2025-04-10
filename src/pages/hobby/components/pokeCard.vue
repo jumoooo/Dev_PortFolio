@@ -157,6 +157,4 @@ const angleFrom = (
   align-items: center;
   justify-content: center;
 }
-.overlay {
-}
 </style>

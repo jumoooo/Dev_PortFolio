@@ -33,6 +33,7 @@ module.exports = configure(function (/* ctx */) {
       'navigation-guards',
       'algoliasearch',
       'pokemon-tcg',
+      'notify',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css

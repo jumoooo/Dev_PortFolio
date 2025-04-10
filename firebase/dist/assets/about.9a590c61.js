@@ -1,1 +1,0 @@
-import{b as t}from"./route-block.1e6a8648.js";import{_ as r}from"./plugin-vue_export-helper.21dcd24c.js";import{o as a,d as s,c}from"./index.73de013b.js";const e={};function n(f,o){return a(),s("div",null,o[0]||(o[0]=[c("div",{class:"text-h4"},"About",-1)]))}typeof t=="function"&&t(e);var d=r(e,[["render",n]]);export{d as default};
