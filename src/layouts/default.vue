@@ -7,12 +7,21 @@
             <q-avatar>
               <img src="/logo.png" />
             </q-avatar>
-            JM 웹 사이트
+            JM 포트폴리오 Web 사이트
           </q-toolbar-title>
         </q-btn>
         <q-space />
+
         <q-btn stretch flat label="Home" to="/" />
-        <q-btn stretch flat label="취미" to="/hobby" />
+        <q-btn stretch flat label="취미">
+          <q-menu self="top left" :auto-close="false">
+            <q-list style="min-width: 140px">
+              <q-item clickable v-close-popup to="/pokeCardPage">
+                <q-item-section>포켓몬 카드</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
         <!-- <q-btn
           stretch
           flat
