@@ -1,0 +1,17 @@
+{
+  "message": {
+    "1000": "Create a new post",
+    "1001": "Search by tag"
+  },
+  "hello": "Hello",
+  "card": "Card",
+  "qna": "Q&A",
+  "community": "Community",
+  "notice": "Notice",
+  "category": "Category",
+  "tag": "Tag",
+  "home": "Home",
+  "hobby": "Hobby",
+  "all": "All",
+  "option": "Option"
+}

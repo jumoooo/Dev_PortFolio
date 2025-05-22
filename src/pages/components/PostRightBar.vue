@@ -11,11 +11,12 @@
       <q-avatar class="q-mr-sm" color="white" text-color="primary" size="22px">
         <q-icon name="edit" size="14px" />
       </q-avatar>
-      <span class="text-weight-bold">새 포스트 작성하기</span>
+      <span class="text-weight-bold">{{ $t('message.1000') }}</span>
+      <!--새 포스트 작성하기-->
     </q-btn>
     <q-card class="q-mt-md bg-grey-1" bordered flat>
       <q-card-section class="flex items-center q-pb-none">
-        <div class="text-weight-bold">태그</div>
+        <div class="text-weight-bold">{{ $t('tag') }}</div>
         <q-space />
         <q-btn
           icon="refresh"
@@ -33,9 +34,9 @@
             borderless
             dense
             input-style="font-size: 12px;"
-            placeholder="태그로 검색해보세요"
+            :placeholder="$t('message.1001')"
             @keypress.enter.prevent="addTag"
-          />
+          /><!--태그로 검색해보세요-->
           <div class="q-gutter-sm q-pb-sm">
             <q-btn
               v-for="(tag, index) in tags"

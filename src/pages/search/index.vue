@@ -6,15 +6,18 @@
         <section class="col-3">
           <q-card flat bordered class="q-pa-md">
             <ais-panel>
-              <template #header>카테고리</template>
+              <template #header>{{ $t('category') }}</template>
               <template #default>
-                <ais-refinement-list attribute="category" />
+                <ais-refinement-list
+                  attribute="category"
+                  :transform-items="translateCategory"
+                />
               </template>
             </ais-panel>
           </q-card>
           <q-card flat bordered class="q-pa-md q-mt-md">
             <ais-panel>
-              <template #header>태그</template>
+              <template #header>{{ $t('tag') }}</template>
               <template #default>
                 <ais-refinement-list attribute="tags" />
               </template>
@@ -42,6 +45,9 @@
 import { liteClient as algoliasearch } from 'algoliasearch/lite';
 import 'instantsearch.css/themes/algolia-min.css';
 import PostList from 'src/components/apps/post/PostList.vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const searchClient = algoliasearch(
   'U6WFDZNP7C',
@@ -60,6 +66,12 @@ const transformItems = items => {
     bookmarkCount: item.bookmarkCount,
     commentCount: item.commentCount,
     uid: item.uid,
+  }));
+};
+const translateCategory = items => {
+  return items.map(item => ({
+    ...item,
+    label: t(`${item.label}`),
   }));
 };
 </script>

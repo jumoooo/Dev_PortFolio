@@ -34,6 +34,7 @@ module.exports = configure(function (/* ctx */) {
       'algoliasearch',
       'pokemon-tcg',
       'notify',
+      'i18n',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css

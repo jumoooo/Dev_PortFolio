@@ -7,13 +7,13 @@
             <q-avatar>
               <img src="/logo.png" />
             </q-avatar>
-            JM 포트폴리오 Web 사이트
+            JM 게시판
           </q-toolbar-title>
         </q-btn>
         <q-space />
 
-        <q-btn stretch flat label="Home" to="/" />
-        <q-btn stretch flat label="취미">
+        <q-btn stretch flat :label="$t('home')" to="/" />
+        <q-btn stretch flat :label="$t('hobby')">
           <q-menu self="top left" :auto-close="false">
             <q-list style="min-width: 140px">
               <q-item clickable v-close-popup to="/pokeCardPage">
@@ -69,6 +69,9 @@
                   >이메일을 인증해주세요.</q-item-section
                 >
               </q-item>
+              <q-item clickable v-close-popup @click="handleOption">
+                <q-item-section>설정</q-item-section>
+              </q-item>
               <q-item clickable v-close-popup @click="handleLogout">
                 <q-item-section>로그아웃</q-item-section>
               </q-item>
@@ -82,6 +85,7 @@
       <router-view />
     </q-page-container>
     <AuthDialog v-model="authDialog" />
+    <OptionDialog v-model="optionDialog" />
   </q-layout>
 </template>
 
@@ -96,6 +100,7 @@ import {
 } from 'src/services';
 
 import AuthDialog from 'src/components/auth/AuthDialog.vue';
+import OptionDialog from '../components/OptionDialog.vue';
 import { useQuasar } from 'quasar';
 
 const authStore = useAuthStore();
@@ -117,5 +122,10 @@ const handleLogout = async () => {
 const varifyEmail = async () => {
   sendVerificationEmail();
   $q.notify('이메일을 확인해주세요');
+};
+
+const optionDialog = ref(false);
+const handleOption = () => {
+  optionDialog.value = true;
 };
 </script>

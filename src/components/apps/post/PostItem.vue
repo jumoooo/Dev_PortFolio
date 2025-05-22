@@ -13,7 +13,7 @@
           {{ formatRelativeTime(item.createdAt) }}
         </span>
         <q-chip class="q-ml-sm" dense color="primary" text-color="white">
-          {{ item.category }}
+          {{ $t(item.category) }}
         </q-chip>
       </div>
       <div class="text-h6 q-mt-sm">{{ item.title }}</div>

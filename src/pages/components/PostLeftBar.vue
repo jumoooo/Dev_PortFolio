@@ -8,7 +8,7 @@
           :active="category === null"
           @click="changeCategory(null)"
         >
-          <q-item-section>전체</q-item-section>
+          <q-item-section>{{ $t('all') }}</q-item-section>
         </q-item>
         <q-item
           v-for="cate in categories"
