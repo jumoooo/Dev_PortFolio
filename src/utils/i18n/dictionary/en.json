@@ -1,7 +1,9 @@
 {
   "message": {
     "1000": "Create a new post",
-    "1001": "Search by tag"
+    "1001": "Search by tag",
+    "1002": "Go to Search Page",
+    "1003": "Please authenticate your email"
   },
   "hello": "Hello",
   "card": "Card",
@@ -15,5 +17,17 @@
   "all": "All",
   "option": "Option",
   "language": "Language",
-  "save": "Save"
+  "save": "Save",
+  "update-orderby": "Update Order",
+  "inquiry-orderby": "Inquiry Order",
+  "like-orderby": "Likes Order",
+  "hits": "Hits",
+  "comments": "Comments",
+  "like": "Like",
+  "bookmark": "Bookmark",
+  "profile": "Profile",
+  "setting": "Setting",
+  "sign-out": "Sign Out",
+  "sign-up": "Sign Up",
+  "log-in": "Log In"
 }

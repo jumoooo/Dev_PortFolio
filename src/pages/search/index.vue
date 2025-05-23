@@ -9,6 +9,7 @@
               <template #header>{{ $t('category') }}</template>
               <template #default>
                 <ais-refinement-list
+                  :key="locale"
                   attribute="category"
                   :transform-items="translateCategory"
                 />
@@ -47,7 +48,7 @@ import 'instantsearch.css/themes/algolia-min.css';
 import PostList from 'src/components/apps/post/PostList.vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const searchClient = algoliasearch(
   'U6WFDZNP7C',

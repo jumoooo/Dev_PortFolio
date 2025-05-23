@@ -83,8 +83,9 @@
       <q-avatar class="q-mr-sm" color="white" text-color="primary" size="22px">
         <q-icon name="manage_search" size="18px" />
       </q-avatar>
-      <span class="text-weight-bold">검색 페이지로 이동</span></q-btn
-    >
+      <span class="text-weight-bold">{{ $t('message.1002') }}</span>
+      <!--검색 페이지로 이동-->
+    </q-btn>
   </StickySideBar>
 </template>
 

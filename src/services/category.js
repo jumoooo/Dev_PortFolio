@@ -1,7 +1,7 @@
 const categories = [
-  { label: 'Q&A', value: 'qna' },
-  { label: '커뮤니티', value: 'community' },
-  { label: '공지사항', value: 'notice' },
+  { label: 'qna', value: 'qna' },
+  { label: 'community', value: 'community' },
+  { label: 'notice', value: 'notice' },
 ];
 
 export function getCategories() {

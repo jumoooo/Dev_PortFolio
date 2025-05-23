@@ -36,7 +36,7 @@
             <PostIcon
               name="sym_o_visibility"
               :label="item.readCount"
-              tooltip="조회수"
+              :tooltip="$t('hits')"
             />
           </div>
         </div>
@@ -45,7 +45,7 @@
             <PostIcon
               name="sym_o_sms"
               :label="item.commentCount"
-              tooltip="댓글수"
+              :tooltip="$t('comments')"
             />
           </div>
         </div>
@@ -55,7 +55,7 @@
               <PostIcon
                 :name="isLike ? 'favorite' : 'sym_o_favorite'"
                 :label="likeCount"
-                tooltip="좋아요"
+                :tooltip="$t('like')"
               />
             </q-btn>
           </div>
@@ -71,7 +71,7 @@
               <PostIcon
                 :name="isBookmark ? 'bookmark' : 'sym_o_bookmark'"
                 :label="bookmarkCount"
-                tooltip="북마크"
+                :tooltip="$t('bookmark')"
               />
             </q-btn>
           </div>

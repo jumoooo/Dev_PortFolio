@@ -1,7 +1,9 @@
 {
   "message": {
     "1000": "새 포스트 작성하기",
-    "1001": "태그로 검색해보세요"
+    "1001": "태그로 검색해보세요",
+    "1002": "검색 페이지로 이동",
+    "1003": "이메일을 인증해주세요"
   },
   "hello": "안녕하세요",
   "card": "카드",
@@ -15,5 +17,18 @@
   "all": "전체",
   "option": "설정",
   "language": "언어",
-  "save": "저장"
+  "save": "저장",
+  "update-orderby": "최신순",
+  "inquiry-orderby": "조회순",
+  "like-orderby": "좋아요 순",
+  "hits": "조회수",
+  "comments": "댓글수",
+  "like": "좋아요",
+  "bookmark": "북마크",
+  "profile": "프로필",
+  "setting": "설정",
+  "sign-out": "로그아웃",
+  "sign-up": "회원가입",
+  "log-in": "로그인",
+  "poke-card": "포켓몬 카드"
 }

@@ -17,7 +17,7 @@
           <q-menu self="top left" :auto-close="false">
             <q-list style="min-width: 140px">
               <q-item clickable v-close-popup to="/pokeCardPage">
-                <q-item-section>포켓몬 카드</q-item-section>
+                <q-item-section>{{ $t('poke-card') }}</q-item-section>
               </q-item>
             </q-list>
           </q-menu>
@@ -25,10 +25,11 @@
         <q-separator vertical class="q-my-md q-mr-md" />
         <q-btn
           v-if="!authStore.isAuthenticated"
+          no-caps
           unelevated
           rounded
           color="primary"
-          label="로그인 / 회원가입"
+          :label="`${$t('log-in')} / ${$t('sign-up')}`"
           @click="openAuthDialog"
         />
         <q-btn v-if="authStore.isAuthenticated" round flat>
@@ -48,18 +49,18 @@
                 v-close-popup
                 :to="`/mypage/profile`"
               >
-                <q-item-section>프로필</q-item-section>
+                <q-item-section>{{ $t('profile') }}</q-item-section>
               </q-item>
               <q-item v-else clickable v-close-popup :to="`/mypage/profile`">
-                <q-item-section class="text-red" @click="varifyEmail"
-                  >이메일을 인증해주세요.</q-item-section
-                >
+                <q-item-section class="text-red" @click="varifyEmail">{{
+                  $t('message.1003')
+                }}</q-item-section>
               </q-item>
               <q-item clickable v-close-popup @click="handleOption">
-                <q-item-section>설정</q-item-section>
+                <q-item-section>{{ $t('setting') }}</q-item-section>
               </q-item>
               <q-item clickable v-close-popup @click="handleLogout">
-                <q-item-section>로그아웃</q-item-section>
+                <q-item-section>{{ $t('sign-out') }}</q-item-section>
               </q-item>
             </q-list>
           </q-menu>
