@@ -5,6 +5,8 @@
     "1002": "Go to Search Page",
     "1003": "Please authenticate your email"
   },
+  "ko": "Korean",
+  "en": "English",
   "hello": "Hello",
   "card": "Card",
   "qna": "Q&A",
@@ -29,5 +31,6 @@
   "setting": "Setting",
   "sign-out": "Sign Out",
   "sign-up": "Sign Up",
-  "log-in": "Log In"
+  "log-in": "Log In",
+  "poke-card": "Poke Card"
 }

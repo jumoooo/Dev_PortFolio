@@ -39,6 +39,9 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const onHide = () => {};
 const props = defineProps({
@@ -50,7 +53,10 @@ const props = defineProps({
 
 const emit = defineEmits(['language', 'submit']);
 
-const languages = ['ko', 'en'];
+const languages = computed(() => [
+  { label: t('ko'), value: 'ko' },
+  { label: t('en'), value: 'en' },
+]);
 
 const languageModel = computed({
   get: () => props.language,
