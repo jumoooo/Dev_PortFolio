@@ -1,4 +1,4 @@
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from 'src/boot/firebase';
 
 export async function getUserById(id) {
@@ -12,4 +12,13 @@ export async function getUserById(id) {
     };
   }
   return null;
+}
+
+export async function updateUserOptions(uid, params) {
+  const docSnap = await getDoc(doc(db, 'users', uid));
+  if (docSnap.exists()) {
+    await updateDoc(doc(db, 'users', uid), {
+      language: params.language,
+    });
+  }
 }

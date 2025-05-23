@@ -56,14 +56,14 @@
 import { ref } from 'vue';
 import { useQuasar } from 'quasar';
 import { useAsyncState } from '@vueuse/core';
-
 import { signInWithGoogle, signInWithEmail } from 'src/services';
 import { getErrorMessage } from 'src/utils/firebase/error-message';
 
 import DisplayError from '../DisplayError.vue';
-const emit = defineEmits(['changeView', 'closeDialog']);
 
 const $q = useQuasar();
+
+const emit = defineEmits(['changeView', 'closeDialog']);
 
 const { isLoading, error, execute } = useAsyncState(signInWithEmail, null, {
   immediate: false,
@@ -79,32 +79,12 @@ const { isLoading, error, execute } = useAsyncState(signInWithEmail, null, {
     });
   },
 });
-
-// const isLoading = ref(false);
-// const error = ref(null);
-
 // 이메일 로그인
 const form = ref({
   email: '',
   password: '',
 });
 const handleSignInEmail = () => execute(1000, form.value);
-// const handleSignInEmail = async () => {
-//   try {
-//     isLoading.value = true;
-//     await signInWithEmail(form.value);
-//     $q.notify('환영합니다~~');
-//     emit('closeDialog');
-//   } catch (err) {
-//     error.value = err;
-//     $q.notify({
-//       type: 'negative',
-//       message: getErrorMessage(err.code),
-//     });
-//   } finally {
-//     isLoading.value = false;
-//   }
-// };
 
 // 로그인 구글
 const handleSignInGoogle = async () => {

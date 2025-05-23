@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, computed, toRef } from 'vue';
+import { computed, toRef } from 'vue';
 import { getCategories } from 'src/services/category';
 import { validateRequired } from 'src/utils/validate-rules';
 import TiptapEditor from 'src/components/tiptap/TiptapEditor.vue';

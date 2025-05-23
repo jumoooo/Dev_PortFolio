@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 import { useLocalStorage, StorageSerializers } from '@vueuse/core';
+import { getUserById } from 'src/services';
+import i18n from 'src/utils/i18n/i18n';
 
 export const useAuthStore = defineStore('auth', () => {
   // 기본값으로 로컬에 저장된 유저 가져오기
@@ -11,7 +13,7 @@ export const useAuthStore = defineStore('auth', () => {
   const uid = computed(() => user.value?.uid || null);
 
   // 접속한 사용자 정보 셋업
-  const setUser = userData => {
+  const setUser = (userData, userDbData) => {
     user.value = userData;
     // 만약 유저 정보 있을시 변경
     if (userData) {
@@ -21,7 +23,13 @@ export const useAuthStore = defineStore('auth', () => {
         displayName: userData.displayName,
         email: userData.email,
         emailVerified: userData.emailVerified,
+        language: userDbData.language ? userDbData.language : 'ko',
       };
+      if (userDbData?.language) {
+        i18n.global.locale = userDbData.language;
+      } else {
+        i18n.global.locale = 'ko';
+      }
     } else {
       user.value = null;
     }

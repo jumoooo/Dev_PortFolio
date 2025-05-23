@@ -22,20 +22,6 @@
             </q-list>
           </q-menu>
         </q-btn>
-        <!-- <q-btn
-          stretch
-          flat
-          label="도와줘 GPT"
-          href="https://chatgpt.com/"
-          target="_blank"
-        /> -->
-        <!-- <q-btn
-          stretch
-          flat
-          label="유튜브"
-          href="https://www.youtube.com/"
-          target="_blank"
-        /> -->
         <q-separator vertical class="q-my-md q-mr-md" />
         <q-btn
           v-if="!authStore.isAuthenticated"
@@ -85,12 +71,16 @@
       <router-view />
     </q-page-container>
     <AuthDialog v-model="authDialog" />
-    <OptionDialog v-model="optionDialog" />
+    <OptionDialog
+      v-model="optionDialog"
+      v-model:language="language"
+      @submit="handleSubmit"
+    />
   </q-layout>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
 import {
@@ -102,6 +92,11 @@ import {
 import AuthDialog from 'src/components/auth/AuthDialog.vue';
 import OptionDialog from '../components/OptionDialog.vue';
 import { useQuasar } from 'quasar';
+import { updateUserOptions } from 'src/services';
+import { useAsyncState } from '@vueuse/core';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n();
 
 const authStore = useAuthStore();
 
@@ -127,5 +122,27 @@ const varifyEmail = async () => {
 const optionDialog = ref(false);
 const handleOption = () => {
   optionDialog.value = true;
+};
+
+const { execute: updateOptions } = useAsyncState(updateUserOptions, null, {
+  immediate: false,
+  throwError: true,
+  onSuccess: res => {
+    $q.notify('저장 완료');
+  },
+});
+const language = ref(authStore.user?.language);
+watch(
+  () => authStore.user?.language,
+  newLang => {
+    if (newLang) {
+      language.value = newLang;
+    }
+  },
+);
+const handleSubmit = newLang => {
+  optionDialog.value = false;
+  locale.value = newLang;
+  updateOptions(0, authStore.user?.uid, { language: newLang });
 };
 </script>
