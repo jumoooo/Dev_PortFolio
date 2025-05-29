@@ -121,12 +121,13 @@
       @click="editor.chain().focus().redo().run()"
       :disabled="!editor.can().chain().focus().redo().run()"
     />
-    <editor-content :editor="editor" />
+    <EditorContent :editor="editor" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { EditorContent } from '@tiptap/vue-3';
 import { uploadImage } from 'src/services';
 
 const props = defineProps({

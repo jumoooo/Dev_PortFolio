@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center q-mb-lg">
     <div class="text-h5">
-      {{ $t(category == 'label.notFound' ? 'all' : category) }}
+      {{ $t(category == null ? 'all' : category) }}
     </div>
     <q-space />
     <q-tabs

@@ -18,7 +18,7 @@
           :active="category === cate.value"
           @click="changeCategory(cate.value)"
         >
-          <q-item-section>{{ $t(cate.label) }}</q-item-section>
+          <q-item-section>{{ $t(cate.value) }}</q-item-section>
         </q-item>
       </q-list>
     </q-card>

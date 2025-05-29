@@ -13,5 +13,5 @@ export function getCategories() {
 export function getCategoriesLabel(val) {
   const { t } = i18n.global;
   const item = getCategories().find(({ value }) => value === val);
-  return item?.label || t('label.notFound');
+  return item?.label || null;
 }
