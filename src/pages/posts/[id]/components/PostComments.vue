@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-subtitle1 text-weight-bold q-mb-lg">
-      댓글 {{ comments?.length }}
+      {{ $t('comment') }} {{ comments?.length }}
     </div>
     <div v-if="isActive">
       <q-form @submit.prevent="handleAddComment">
@@ -14,10 +14,15 @@
           ref="focusInput"
         />
         <div class="flex justify-end q-gutter-x-sm q-mt-sm">
-          <q-btn label="취소" color="dark" unelevated @click="toggleActive" />
+          <q-btn
+            :label="t('cancel')"
+            color="dark"
+            unelevated
+            @click="toggleActive"
+          />
           <q-btn
             type="submit"
-            label="등록"
+            :label="t('post')"
             color="primary"
             unelevated
             :loading="isLoading"
@@ -37,7 +42,7 @@
             "
           />
         </q-avatar>
-        <div class="text-grey-6 q-ml-md">댓글을 작성해보세요.</div>
+        <div class="text-grey-6 q-ml-md">{{ $t('message.1018') }}</div>
       </q-card-section>
     </BaseCard>
 
@@ -56,13 +61,16 @@ import { useRoute } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
 import { useAsyncState } from '@vueuse/core';
 import { addComment } from 'src/services';
+import { validateRequired } from 'src/utils/validate-rules';
+import { useI18n } from 'vue-i18n';
+
 import CommentList from 'src/components/apps/comment/CommentList.vue';
 import BaseCard from 'src/components/base/BaseCard.vue';
-import { validateRequired } from 'src/utils/validate-rules';
 
 const $q = useQuasar();
 const route = useRoute();
 const authStore = useAuthStore();
+const { t } = useI18n();
 
 const messagePlaceholer = ref(null);
 const focusInput = ref(null);
@@ -77,7 +85,7 @@ const props = defineProps({
 const isActive = ref(false); // 댓글 작성창 활성화
 const toggleActive = () => {
   if (!isActive.value && !authStore.isAuthenticated) {
-    alert('로그인 후 이용 가능합니다.');
+    $q.notify(t('message.1019'));
     return;
   }
   isActive.value = !isActive.value;
@@ -108,7 +116,7 @@ const { isLoading, execute: executeAddComment } = useAsyncState(
 // 댓글 추가
 const handleAddComment = async () => {
   if (!message.value || message.value?.length <= 0) {
-    messagePlaceholer.value = '댓글을 입력해 주세요';
+    messagePlaceholer.value = t('message.1020');
     focusInput.value?.focus();
     return;
   }

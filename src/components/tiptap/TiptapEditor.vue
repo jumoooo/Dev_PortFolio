@@ -14,7 +14,9 @@ import Placeholder from '@tiptap/extension-placeholder';
 import TiptapEditorMenu from './TiptapEditorMenu.vue';
 import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const props = defineProps({
   modelValue: {
     type: String,
@@ -28,7 +30,7 @@ const editor = useEditor({
   extensions: [
     StarterKit,
     Placeholder.configure({
-      placeholder: '마크다운을 이용해서 편리하게 글을 작성하세요.',
+      placeholder: t('message.1012'), // 마크다운을 이용해서 편리하게 글을 작성하세요.
     }),
     Link,
     Image,

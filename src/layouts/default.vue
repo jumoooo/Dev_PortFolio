@@ -97,7 +97,7 @@ import { updateUserOptions } from 'src/services';
 import { useAsyncState } from '@vueuse/core';
 import { useI18n } from 'vue-i18n';
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 const authStore = useAuthStore();
 
@@ -112,12 +112,12 @@ const authDialog = ref(false);
 const openAuthDialog = () => (authDialog.value = true);
 const handleLogout = async () => {
   await logout();
-  $q.notify('로그아웃 되었습니다.');
+  $q.notify(t('message.1013'));
 };
 
 const varifyEmail = async () => {
   sendVerificationEmail();
-  $q.notify('이메일을 확인해주세요');
+  $q.notify(t('message.1014'));
 };
 
 const optionDialog = ref(false);
@@ -129,7 +129,7 @@ const { execute: updateOptions } = useAsyncState(updateUserOptions, null, {
   immediate: false,
   throwError: true,
   onSuccess: res => {
-    $q.notify('저장 완료');
+    $q.notify(t('message.1015'));
   },
 });
 const language = ref(authStore.user?.language);

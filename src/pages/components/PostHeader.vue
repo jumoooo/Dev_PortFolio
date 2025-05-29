@@ -1,6 +1,8 @@
 <template>
   <div class="flex items-center q-mb-lg">
-    <div class="text-h5">{{ $t(category) }}</div>
+    <div class="text-h5">
+      {{ $t(category == 'label.notFound' ? 'all' : category) }}
+    </div>
     <q-space />
     <q-tabs
       narrow-indicator

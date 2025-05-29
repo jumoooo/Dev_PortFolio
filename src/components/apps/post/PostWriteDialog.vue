@@ -8,7 +8,7 @@
   >
     <q-card :style="{ minwidth: '660px' }">
       <q-toolbar>
-        <q-toolbar-title>글쓰기</q-toolbar-title>
+        <q-toolbar-title>{{ $t('create-post') }}</q-toolbar-title>
         <q-btn v-close-popup flat round dense icon="close" />
       </q-toolbar>
       <q-separator />

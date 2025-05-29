@@ -4,3 +4,120 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+// yejin add css
+:root {
+  --main-color: #1976d2;
+}
+
+#more_menu_btn {
+  display: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 25px;
+  color: white;
+  border-radius: 50%;
+  background-color: var(--main-color);
+}
+
+@media (max-width: 786px) {
+  #more_menu_btn {
+    display: block;
+  }
+
+  main.q-layout-padding {
+    padding: 0;
+  }
+
+  .main_wrap {
+    display: block;
+  }
+
+  .sub_menu {
+    position: static !important;
+  }
+  .sub_menu .q-card {
+    border: none;
+    border-radius: 0;
+    background-color: var(--main-color);
+  }
+  .sub_menu .q-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sub_menu .q-list .q-item {
+    border: none;
+    color: white;
+  }
+  .sub_menu .q-item.q-router-link--active,
+  .q-item--active {
+    color: #1976d2;
+    background-color: #fff;
+    font-weight: bold;
+  }
+
+  .main_content_wrap {
+    width: calc(100% - 32px) !important;
+    margin: 16px auto;
+  }
+
+  .right_bar_wrap {
+    position: fixed !important;
+    width: auto !important;
+    height: auto !important;
+    top: auto !important;
+    bottom: 5% !important;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tag_wrap {
+    display: none;
+  }
+  #more_menu_btn {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    order: 3;
+  }
+  .right_bar_wrap .q-btn {
+    display: none;
+    padding: 0 !important;
+    width: 40px !important;
+    height: 40px;
+    background-color: transparent !important;
+    transition: all 1s;
+  }
+  .right_bar_wrap button.open ~ .q-btn {
+    display: block;
+  }
+  .right_bar_wrap .q-btn.write {
+    order: 1;
+  }
+  .right_bar_wrap .q-btn.search {
+    margin: 0;
+    order: 2;
+  }
+  .right_bar_wrap .q-btn__content .q-avatar {
+    margin-right: 0;
+    width: 40px;
+    height: 40px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .right_bar_wrap .q-btn__content .q-avatar .q-avatar__content i {
+    font-size: 20px !important;
+  }
+  .right_bar_wrap .q-btn__content .q-avatar .q-avatar__content i.search {
+    font-size: 26px !important;
+  }
+  .right_bar_wrap .q-btn__content span.text-weight-bold {
+    display: none;
+  }
+  .post_wrap {
+    width: calc(100% - 16px) !important;
+    height: calc(100% - 16px) !important;
+    margin: 8px;
+  }
+}

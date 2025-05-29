@@ -1,14 +1,17 @@
-const categories = [
-  { label: 'qna', value: 'qna' },
-  { label: 'community', value: 'community' },
-  { label: 'notice', value: 'notice' },
-];
+import i18n from 'src/utils/i18n/i18n';
+const { t } = i18n.global;
 
 export function getCategories() {
-  return categories;
+  const { t } = i18n.global;
+  return [
+    { label: t('notice'), value: 'notice' },
+    { label: t('qna'), value: 'qna' },
+    { label: t('community'), value: 'community' },
+  ];
 }
 
 export function getCategoriesLabel(val) {
-  const result = categories.find(({ label, value }) => value === val);
-  return result?.label;
+  const { t } = i18n.global;
+  const item = getCategories().find(({ value }) => value === val);
+  return item?.label || t('label.notFound');
 }

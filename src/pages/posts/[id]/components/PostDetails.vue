@@ -37,8 +37,13 @@
       <div class="q-ml-md">
         <div>{{ postUser.displayName }}</div>
         <div class="text-grey-6">
-          {{ post.category }}
-          {{ date.formatDate(post.createdAt, 'YYYY. MM. DD HH:mm:ss') }}
+          {{
+            `${$t(post?.category ? post?.category : '...')} / ${
+              date?.formatDate(post.createdAt, 'YYYY. MM. DD HH:mm:ss')
+                ? date?.formatDate(post.createdAt, 'YYYY. MM. DD HH:mm:ss')
+                : ''
+            }`
+          }}
         </div>
       </div>
       <q-space />
@@ -50,10 +55,10 @@
               v-close-popup
               :to="`/posts/${$route.params.id}/edit`"
             >
-              <q-item-section>수정하기</q-item-section>
+              <q-item-section>{{ $t('modify_01') }}</q-item-section>
             </q-item>
             <q-item clickable v-close-popup @click="handleDeletePost">
-              <q-item-section>삭제 하기</q-item-section>
+              <q-item-section>{{ $t('delete_01') }}</q-item-section>
             </q-item>
           </q-list>
         </q-menu>
@@ -82,10 +87,14 @@ import { useAuthStore } from 'src/stores/auth';
 import { deletePost, getPostDetails } from 'src/services';
 import { useAsyncState } from '@vueuse/core';
 import { useLike } from 'src/composables/useLike';
+import { useBookmark } from 'src/composables/useBookmark';
+import { useI18n } from 'vue-i18n';
+
 import PostIcon from 'src/components/apps/post/PostIcon.vue';
 import BaseCard from 'src/components/base/BaseCard.vue';
 import TiptapViewer from 'src/components/tiptap/TiptapViewer.vue';
-import { useBookmark } from 'src/composables/useBookmark';
+
+const { t } = useI18n();
 
 const route = useRoute();
 const router = useRouter();
@@ -117,12 +126,12 @@ const { execute: executeDeletePost } = useAsyncState(deletePost, null, {
   immediate: false,
   throwError: true,
   onSuccess: () => {
-    $q.notify('삭제 완료');
+    $q.notify(t('message.1016')); // 삭제 완료.
     router.push('/');
   },
 });
 const handleDeletePost = async () => {
-  if (confirm('삭제 하시겠어요?') === false) return;
+  if (confirm(t('message.1017')) === false) return; // 삭제 하시겠어요?
 
   await executeDeletePost(0, route.params.id);
 };

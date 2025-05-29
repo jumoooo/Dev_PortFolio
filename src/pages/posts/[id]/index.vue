@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>
+  <q-page padding class="post_wrap">
     <PostDetails :commentCount="commentCount" />
     <q-separator class="q-my-xl" />
     <PostComments @update-comments="updateComments" :comments="comments" />

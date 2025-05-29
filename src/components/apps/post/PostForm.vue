@@ -4,7 +4,7 @@
       <q-input
         v-model="titleModel"
         outlined
-        placeholder="제목"
+        :placeholder="$t('title')"
         hide-bottom-space
         :rules="[validateRequired]"
         counter
@@ -18,13 +18,13 @@
         map-options
       >
         <template v-if="!categoryModel" #selected>
-          <span class="text-grey-7">카테고리를 선택하세요.</span>
+          <span class="text-grey-7">{{ $t('message.1004') }}</span>
         </template>
       </q-select>
       <TiptapEditor v-model="contentModel" />
       <q-input
         outlined
-        placeholder="태그를 입력해주세요~! (입력 후 Enter)"
+        :placeholder="$t('message.1005')"
         prefix="#"
         @keypress.enter.prevent="addTag"
       />
@@ -42,11 +42,11 @@
       <q-separator />
       <q-card-actions align="right">
         <slot name="actions">
-          <q-btn flat label="취소하기" v-close-popup />
+          <q-btn flat :label="$t('cancel')" v-close-popup />
           <q-btn
             type="submit"
             flat
-            label="저장하기"
+            :label="$t('save')"
             color="primary"
             :loading="loading"
           />
@@ -60,9 +60,13 @@
 import { computed, toRef } from 'vue';
 import { getCategories } from 'src/services/category';
 import { validateRequired } from 'src/utils/validate-rules';
-import TiptapEditor from 'src/components/tiptap/TiptapEditor.vue';
 import { useQuasar } from 'quasar';
 import { useTag } from 'src/composables/useTag';
+import { useI18n } from 'vue-i18n';
+
+import TiptapEditor from 'src/components/tiptap/TiptapEditor.vue';
+
+const { t } = useI18n();
 
 const props = defineProps({
   title: {
@@ -110,14 +114,14 @@ const contentModel = computed({
 const { addTag, removeTag } = useTag({
   tags: toRef(props, 'tags'),
   updateTags: tags => emit('update:tags', tags),
-  maxLengthMessage: '태그는 10개 이상 등록할 수 없습니다.',
+  maxLengthMessage: t('message.1006'), // 태그는 10개 이상 등록할 수 없습니다.
 });
 
 const categories = getCategories();
 
 const handleSubmit = () => {
   if (!contentModel.value) {
-    $q.notify('내용을 작성하세요.');
+    $q.notify(t('message.1007')); // 내용을 작성하세요.
     return;
   }
   emit('submit');

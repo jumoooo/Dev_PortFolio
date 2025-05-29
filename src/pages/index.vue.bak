@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
-    <div class="main_wrap row q-col-gutter-x-lg">
+    <div class="row q-col-gutter-x-lg">
       <PostLeftBar class="col-grow" v-model:category="category" />
-      <section class="col-7 main_content_wrap">
+      <section class="col-7">
         <PostHeader
           v-model:sort="sort"
           :category="getCategoriesLabel(category)"

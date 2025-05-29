@@ -2,8 +2,8 @@
   <q-page padding>
     <ais-instant-search :search-client="searchClient" index-name="dev_posts">
       <ais-configure :hits-per-page.camel="8" />
-      <div class="row q-col-gutter-x-lg">
-        <section class="col-3">
+      <div class="main_wrap row q-col-gutter-x-lg">
+        <section class="col-3 main_content_wrap q-gutter-y-sm">
           <q-card flat bordered class="q-pa-md">
             <ais-panel>
               <template #header>{{ $t('category') }}</template>
@@ -16,7 +16,7 @@
               </template>
             </ais-panel>
           </q-card>
-          <q-card flat bordered class="q-pa-md q-mt-md">
+          <q-card flat bordered class="q-pa-md">
             <ais-panel>
               <template #header>{{ $t('tag') }}</template>
               <template #default>
@@ -25,8 +25,8 @@
             </ais-panel>
           </q-card>
         </section>
-        <section class="col-9">
-          <ais-search-box />
+        <section class="col-9 main_content_wrap">
+          <ais-search-box class="web_search_box" />
           <q-separator spaced />
           <ais-hits :transform-items="transformItems">
             <template v-slot="{ items }">

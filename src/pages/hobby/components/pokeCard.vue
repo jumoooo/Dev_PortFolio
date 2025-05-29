@@ -1,6 +1,6 @@
 <template>
   <div class="container flex items-center justify-center" ref="containerRef">
-    <div class="relative-wrapper q-my-md">
+    <div class="card-inner relative-wrapper q-my-md">
       <div
         class="overlay"
         ref="overlayRef"
@@ -117,7 +117,7 @@ const angleFrom = (
 <style lang="scss" scoped>
 .container {
   width: 100%;
-  height: 100%; // 이게 중요함 (또는 100vh)
+  height: 100%;
   transition: all 0.1s;
 }
 .overlay {
@@ -156,5 +156,8 @@ const angleFrom = (
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.card-inner {
+  aspect-ratio: 190 / 280;
 }
 </style>
