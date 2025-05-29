@@ -124,4 +124,9 @@ a {
     margin: auto 8px;
     width: calc(100% - 16px) !important;
   }
+  .option-wrap {
+    margin: auto 8px;
+    width: calc(100% - 16px) !important;
+    aspect-ratio: 460 / 550;
+  }
 }

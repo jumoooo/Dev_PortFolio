@@ -8,7 +8,7 @@
     transition-hide="none"
     position="standard"
   >
-    <q-card style="min-width: 460px; height: 550px" class="column">
+    <q-card class="option-wrap column">
       <q-toolbar>
         <q-avatar style="width: 30px; height: 30px">
           <img src="https://cdn-icons-png.flaticon.com/128/17/17789.png" />
@@ -68,4 +68,12 @@ const handleSubmit = () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (min-width: 786px) {
+  .option-wrap {
+    min-width: 460px;
+    height: 550px;
+    aspect-ratio: 460 / 550;
+  }
+}
+</style>
