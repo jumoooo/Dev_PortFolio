@@ -25,6 +25,7 @@ export const useAuthStore = defineStore('auth', () => {
         emailVerified: userData.emailVerified,
         language: userDbData.language ? userDbData.language : 'ko',
       };
+      // 다국어 설정
       if (userDbData?.language) {
         i18n.global.locale = userDbData.language;
       } else {

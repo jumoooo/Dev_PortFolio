@@ -20,7 +20,10 @@
     "1017": "Do you want to delete it?",
     "1018": "Write a comment.",
     "1019": "You can use it after you log in.",
-    "1020": "Please enter your comments."
+    "1020": "Please enter your comments.",
+    "1021": "Profile modification completed.",
+    "1022": "Email modification completed.",
+    "1023": "Your password has been changed."
   },
   "...": "",
   "ko": "Korean",
@@ -59,5 +62,13 @@
   "modify": "Modify",
   "delete_01": "Delete",
   "modify_01": "Modify",
-  "post": "Post"
+  "post": "Post",
+  "change-password": "Change Password",
+  "change-profile": "Change Profile",
+  "nickname": "Nickname",
+  "save_01": "Save",
+  "change-email": "Change Email",
+  "email": "Email",
+  "new-password": "New Password",
+  "check-the-new-password": "Check the New Password"
 }

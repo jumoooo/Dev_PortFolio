@@ -3,15 +3,20 @@
     <BaseCard>
       <q-form @submit.prevent="handleSubmitProfile">
         <q-card-section class="q-gutter-y-md">
-          <div class="text-h6">프로필 변경</div>
-          <q-input v-model="displayName" outlined dense label="닉네임" />
+          <div class="text-h6">{{ $t('change-profile') }}</div>
+          <q-input
+            v-model="displayName"
+            outlined
+            dense
+            :label="t('nickname')"
+          />
         </q-card-section>
         <q-separator />
         <q-card-actions>
           <q-space />
           <q-btn
             type="submit"
-            label="저장하기"
+            :label="t('save_01')"
             flat
             color="primary"
             :loading="isLoadingProfile"
@@ -22,15 +27,15 @@
     <BaseCard>
       <q-form @submit.prevent="handleSubmitEmail">
         <q-card-section class="q-gutter-y-md">
-          <div class="text-h6">이메일 변경</div>
-          <q-input v-model="email" outlined dense label="이메일" />
+          <div class="text-h6">{{ $t('change-email') }}</div>
+          <q-input v-model="email" outlined dense :label="t('email')" />
         </q-card-section>
         <q-separator />
         <q-card-actions>
           <q-space />
           <q-btn
             type="submit"
-            label="저장하기"
+            :label="t('save_01')"
             flat
             color="primary"
             :loading="isLoadingEmail"
@@ -49,9 +54,11 @@ import { updateuserEmail, updateuserProfile } from 'src/services';
 import { useAuthStore } from 'src/stores/auth';
 import { ref, watchEffect } from 'vue';
 import { getErrorMessage } from 'src/utils/firebase/error-message';
+import { useI18n } from 'vue-i18n';
 
 const authStore = useAuthStore();
 const $q = useQuasar();
+const { t } = useI18n();
 
 const { isLoading: isLoadingProfile, execute: executeProfile } = useAsyncState(
   updateuserProfile,
@@ -59,7 +66,7 @@ const { isLoading: isLoadingProfile, execute: executeProfile } = useAsyncState(
   {
     immediate: false,
     onSuccess: () => {
-      $q.notify('프로필 수정 완료.');
+      $q.notify(t('message.1021'));
     },
     onError: err => {
       console.log('err :', err);
@@ -84,7 +91,7 @@ const { isLoading: isLoadingEmail, execute: executeEmail } = useAsyncState(
   {
     immediate: false,
     onSuccess: () => {
-      $q.notify('이메일 수정 완료.');
+      $q.notify(t('message.1022'));
     },
     onError: err => {
       $q.notify({

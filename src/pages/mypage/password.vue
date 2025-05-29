@@ -2,20 +2,20 @@
   <BaseCard>
     <q-form @submit.prevent="handleSubmit">
       <q-card-section class="q-gutter-y-md">
-        <div class="text-h6">비밀번호 변경</div>
+        <div class="text-h6">{{ $t('change-password') }}</div>
         <q-input
           v-model="form.newPassword"
           type="password"
           outlined
           dense
-          label="새로운 비밀번호"
+          :label="t('new-password')"
         />
         <q-input
           v-model="form.newPasswordconfirm"
           type="password"
           outlined
           dense
-          label="새로운 비밀번호 확인"
+          :label="t('check-the-new-password')"
         />
       </q-card-section>
       <q-separator />
@@ -23,7 +23,7 @@
         <q-space />
         <q-btn
           type="submit"
-          label="저장하기"
+          :label="t('save_01')"
           flat
           color="primary"
           :loading="isLoading"
@@ -40,12 +40,14 @@ import BaseCard from 'src/components/base/BaseCard.vue';
 import { updateUserPassword } from 'src/services';
 import { ref } from 'vue';
 import { getErrorMessage } from 'src/utils/firebase/error-message';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const $q = useQuasar();
 const { isLoading, error, execute } = useAsyncState(updateUserPassword, null, {
   immediate: false,
   onSuccess: () => {
-    $q.notify('비밀번호가 변경되었습니다.');
+    $q.notify(t('message.1023'));
     form.value.newPassword = '';
     form.value.newPasswordconfirm = '';
   },
