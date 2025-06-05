@@ -7,7 +7,7 @@
             <q-avatar>
               <img src="/logo.png" />
             </q-avatar>
-            JM 게시판
+            JM 포트폴리오
           </q-toolbar-title>
         </q-btn>
         <q-space />
@@ -67,7 +67,6 @@
         </q-btn>
       </q-toolbar>
     </q-header>
-
     <q-page-container :style="pageContainerStyless">
       <router-view />
     </q-page-container>

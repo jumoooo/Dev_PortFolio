@@ -1,163 +1,112 @@
 <template>
-  <div class="container flex items-center justify-center" ref="containerRef">
-    <div class="card-inner relative-wrapper q-my-md">
-      <div
-        class="overlay"
-        ref="overlayRef"
-        :style="{
-          width: cardStyle.width,
-          height: cardStyle.height,
-        }"
-      ></div>
-      <div class="card" :style="cardStyle"></div>
+  <div
+    class="card-container"
+    ref="cardRef"
+    @mousemove="handleMouseMove"
+    @mouseleave="resetCard"
+  >
+    <div class="card" :style="cardStyle">
+      <div class="overlay" ref="overlayRef"></div>
     </div>
   </div>
 </template>
-
 <script setup>
-import { computed, ref } from 'vue';
-import { onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
-const containerRef = ref(null);
+const cardRef = ref(null);
 const overlayRef = ref(null);
 
 const props = defineProps({
-  imageUrl: {
-    type: String,
-  },
-  width: {
-    type: [String, Number],
-    default: 190,
-  },
-  height: {
-    type: [String, Number],
-    default: 280,
-  },
-  borderRadius: {
-    type: [String, Number],
-    default: 9,
-  },
+  imageUrl: String,
+  width: { type: [String, Number], default: 190 },
+  height: { type: [String, Number], default: 280 },
+  borderRadius: { type: [String, Number], default: 9 },
 });
-
-const convertString = val => {
-  if (typeof val == 'number') {
-    return val + 'px';
-  }
-  return val;
-};
+const px = val =>
+  typeof val === 'number'
+    ? `${val}px`
+    : val.toString().includes('%') ||
+      val.toString().includes('vw') ||
+      val.toString().includes('vh')
+    ? val
+    : `${val}`;
 
 const cardStyle = computed(() => ({
   backgroundImage: `url(${props.imageUrl})`,
-  width: convertString(props.width),
-  height: convertString(props.height),
-  borderRadius: convertString(props.borderRadius),
+  width: px(props.width),
+  height: px(props.height),
+  borderRadius: px(props.borderRadius),
+  backgroundSize: '100% 100%',
 }));
 
-onMounted(() => {
-  const container = containerRef.value;
-  const overlay = overlayRef.value;
-  // 초기 중앙 위치 세팅
+// const rect = cardRef.value.getBoundingClientRect();
+// if (rect.width > rect.height) {
+//   const lowe = (rect.width * 280) / 190;
+// }
 
-  // 마우스 없을 때 중앙에서 시작
-  container.addEventListener('mousemove', e => {
-    const x = e.offsetX;
-    const y = e.offsetY;
-
-    const cardAngle = {
-      x: angleFrom(x, {
-        sizeMin: 0,
-        sizeMax: props.width,
-        angleMin: -20,
-        angleMax: 20,
-      }),
-      y: angleFrom(y, {
-        sizeMin: 0,
-        sizeMax: props.height,
-        angleMin: 20,
-        angleMax: -20,
-      }),
-    };
-    const overlayPosition = {
-      x: x - 90,
-      y: y - 90,
-    };
-
-    overlay.style.opacity = '1';
-    overlay.style.backgroundPosition = `${overlayPosition.x}px ${overlayPosition.y}px`;
-    container.style.transform = `perspective(340px) rotateY(${cardAngle.x}deg) rotateX(${cardAngle.y}deg)`;
-  });
-
-  container.addEventListener('mouseout', () => {
-    overlay.style.opacity = '0';
-    container.style.transform = `perspective(350px) rotateY(0deg) rotateX(0deg)`;
-  });
-});
-
-// 현재값을 기준으로 angleMin ~ angleMax 사이의 각도를 계산해주는 함수
-// 이미지 등 콘텐츠 회전시킬때 사용
-const angleFrom = (
-  currentValue, // 현재값 (예: 현재 높이값)
-  {
-    sizeMin = 0, // 입력 범위의 최소값
-    sizeMax = 0, // 입력 범위의 최대값
-    angleMin = 0, // 출력 각도 범위의 최소값
-    angleMax = 0, // 출력 각도 범위의 최대값
-  },
-) => {
-  // currentValue가 sizeMin ~ sizeMax 사이에서 몇 퍼센트에 해당하는지 계산 (0 ~ 1 사이 비율)
-  const ratio = (currentValue - sizeMin) / (sizeMax - sizeMin);
-
-  // 해당 비율을 angleMax ~ angleMin 범위로 선형 변환
-  // angle이 줄어드는 방향일 수 있으므로 angleMin - angleMax를 곱함
-  // 출력값 = 시작값 + (끝값 - 시작값) * 비율
-  return angleMax + (angleMin - angleMax) * ratio;
+// 기울기 계산 함수
+const angleFrom = (value, min, max, aMin, aMax) => {
+  const ratio = (value - min) / (max - min);
+  return aMax + (aMin - aMax) * ratio;
 };
+
+// 마우스 무브
+const handleMouseMove = e => {
+  const rect = cardRef.value.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  const rotateX = angleFrom(y, 0, rect.height, 20, -20);
+  const rotateY = angleFrom(x, 0, rect.width, -20, 20);
+
+  cardRef.value.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  overlayRef.value.style.opacity = '1';
+  overlayRef.value.style.backgroundPosition = `${x - 90}px ${y - 90}px`;
+};
+
+const resetCard = () => {
+  cardRef.value.style.transform = `perspective(600px) rotateX(0deg) rotateY(0deg)`;
+  overlayRef.value.style.opacity = '0';
+};
+onMounted(() => {
+  const rect = cardRef.value.getBoundingClientRect();
+  console.log('rect.width', rect.width);
+  console.log('rect.height', rect.height);
+});
 </script>
-
-<style lang="scss" scoped>
-.container {
-  width: 100%;
-  height: 100%;
-  transition: all 0.1s;
+<style scoped>
+.card-container {
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+  width: fit-content;
+  height: fit-content;
+  perspective: 600px;
 }
-.overlay {
-  border-radius: 9px;
-  position: absolute;
-  // width: 220px;
-  // height: 310px;
-  pointer-events: none;
 
-  // 흐릿한 빛 느낌 (형체 안 보이게)
+.card {
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: inherit;
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0) 70%
   );
-
   background-repeat: no-repeat;
   background-size: 180px 180px;
   background-position: 50% 50%;
-
-  // position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.card {
-  border-radius: 9px;
-  // width: 220px;
-  // height: 310px;
-  // background-size: cover;
-  background-size: 100% 100%;
-  box-shadow: 0px 5px 15px black;
-}
-.relative-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.card-inner {
-  aspect-ratio: 190 / 280;
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
 }
 </style>

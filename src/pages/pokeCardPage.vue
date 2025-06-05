@@ -10,14 +10,6 @@
         />
       </div>
 
-      <!-- <q-list class="flex" bordered separator>
-      <pokeCard
-        v-for="card of cardList"
-        :key="card.id"
-        :image-url="card.images.small"
-        style="width: 20%"
-      />
-    </q-list> -->
       <!-- 카드 리스트 -->
       <div class="card-list-wrapper q-pa-md q-mt-md">
         <div class="card-list-container">
@@ -26,7 +18,21 @@
             :key="card.id"
             :image-url="card.images.small"
             class="card-item"
+            @click="selectedCard = card"
           />
+        </div>
+        <div
+          v-if="selectedCard"
+          class="overlay"
+          @click.self="selectedCard = null"
+        >
+          <div class="enlarged-card" @click.stop>
+            <pokeCard
+              :image-url="selectedCard.images.small"
+              :width="enlargedCardSize.width"
+              :height="enlargedCardSize.height"
+            />
+          </div>
         </div>
       </div>
       <!-- 페이지네이션 -->
@@ -41,6 +47,8 @@
           icon-next="fast_forward"
           direction-links
           boundary-links
+          flat
+          dense
         />
       </div>
     </div>
@@ -56,7 +64,7 @@ const defaultMaxCount = 0;
 </script>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { usePokeCard } from 'src/composables/usePokeCard';
 import { useAsyncState } from '@vueuse/core';
 import { useQuasar } from 'quasar';
@@ -120,11 +128,41 @@ watch(currentIdx, (val, oldVal) => {
     execute();
   }
 });
+
+const selectedCard = ref(null);
+const windowSize = ref({
+  width: window.innerWidth,
+  height: window.innerHeight,
+});
+const updateWindowSize = () => {
+  windowSize.value.width = window.innerWidth;
+  windowSize.value.height = window.innerHeight;
+};
+onMounted(() => {
+  window.addEventListener('resize', updateWindowSize);
+});
+onUnmounted(() => {
+  window.removeEventListener('resize', updateWindowSize);
+});
+
+// 카드 비율 계산 (비율: 190 / 280)
+const enlargedCardSize = computed(() => {
+  // baseSize : 작은 화면크기의 80% 크기 값
+  const baseSize =
+    Math.min(windowSize.value.width, windowSize.value.height) * 0.8;
+  const aspectRatio = 190 / 280;
+
+  // baseSize는 세로 기준, width 계산
+  return {
+    width: `${baseSize * aspectRatio}px`,
+    height: `${baseSize}px`,
+  };
+});
 </script>
 
 <style lang="scss" scoped>
 .card-list-wrapper {
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   border-radius: 8px;
 }
 
@@ -146,5 +184,24 @@ watch(currentIdx, (val, oldVal) => {
   margin: 8px;
   width: calc(100% - 16px);
   height: calc(100% - 16px);
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20vh;
+}
+
+.enlarged-card {
+  aspect-ratio: 190 / 280;
+  // background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
 }
 </style>
