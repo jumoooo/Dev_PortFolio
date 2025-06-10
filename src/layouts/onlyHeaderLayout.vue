@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lff" class="bg-grey-2">
+  <q-layout view="hHh LpR fff" class="bg-grey-2">
     <q-header bordered class="bg-white text-grey-9">
       <q-toolbar>
         <q-btn flat dense to="/">
@@ -71,6 +71,12 @@
     <q-page-container :style="pageContainerStyless">
       <router-view />
     </q-page-container>
+    <q-footer class="text-black bg-grey-2 flex flex-center">
+      <div class="footer-title flex flex-center">
+        <q-icon size="lg" color="#1f1f1f" name="email" class="q-mr-sm" />
+        <span class="footer-email">rnsdlsdmltk@gmail.com</span>
+      </div>
+    </q-footer>
     <AuthDialog v-model="authDialog" />
     <OptionDialog
       v-model="optionDialog"
@@ -108,6 +114,7 @@ const pageContainerStyless = computed(() => ({
   maxWidth: route.meta?.width || '1080px',
   margin: '0 auto',
 }));
+// console.log(pageContainerStyless.value);
 const authDialog = ref(false);
 const openAuthDialog = () => (authDialog.value = true);
 const handleLogout = async () => {
@@ -147,3 +154,11 @@ const handleSubmit = newLang => {
   updateOptions(0, authStore.user?.uid, { language: newLang });
 };
 </script>
+<style lang="scss" scoped>
+.q-footer {
+  height: 250px;
+}
+.footer-email {
+  font-size: 36px;
+}
+</style>

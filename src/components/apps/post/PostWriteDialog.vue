@@ -60,7 +60,7 @@ const { isLoading, execute } = useAsyncState(createPost, null, {
   immediate: false,
   throwError: true,
   onSuccess: postID => {
-    console.log(postID);
+    // console.log(postID);
     emit('complete');
     // router.push(`/posts/${postID}`);
   },

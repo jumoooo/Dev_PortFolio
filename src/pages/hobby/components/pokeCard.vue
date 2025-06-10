@@ -70,8 +70,8 @@ const resetCard = () => {
 };
 onMounted(() => {
   const rect = cardRef.value.getBoundingClientRect();
-  console.log('rect.width', rect.width);
-  console.log('rect.height', rect.height);
+  // console.log('rect.width', rect.width);
+  // console.log('rect.height', rect.height);
 });
 </script>
 <style scoped>
