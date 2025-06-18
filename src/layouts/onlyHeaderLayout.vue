@@ -73,8 +73,10 @@
     </q-page-container>
     <q-footer class="text-black bg-grey-2 flex flex-center">
       <div class="footer-title flex flex-center">
-        <q-icon size="lg" color="#1f1f1f" name="email" class="q-mr-sm" />
-        <span class="footer-email">rnsdlsdmltk@gmail.com</span>
+        <q-icon size="sm" color="#1f1f1f" name="email" class="q-mr-sm" />
+        <span class="footer-email" style="font-size: 22px"
+          >rnsdlsdmltk@gmail.com
+        </span>
       </div>
     </q-footer>
     <AuthDialog v-model="authDialog" />
@@ -157,8 +159,5 @@ const handleSubmit = newLang => {
 <style lang="scss" scoped>
 .q-footer {
   height: 250px;
-}
-.footer-email {
-  font-size: 36px;
 }
 </style>

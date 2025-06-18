@@ -1,10 +1,28 @@
 // app global css in SCSS form
+a,
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
 a {
   color: currentColor;
   text-decoration: none;
   cursor: pointer;
 }
-
+h1,
+h2 {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+figure {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
 // yejin add css
 :root {
   --main-color: #1976d2;
@@ -21,7 +39,10 @@ a {
   border-radius: 50%;
   background-color: var(--main-color);
 }
-
+/* src/assets/css/main.css 또는 글로벌 CSS 파일 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 @media (max-width: 786px) {
   #more_menu_btn {
     display: block;
@@ -128,5 +149,11 @@ a {
     margin: auto 8px;
     width: calc(100% - 16px) !important;
     aspect-ratio: 460 / 550;
+  }
+  .portfolio-containar {
+    padding: 20px;
+  }
+  .carrers-wrap {
+    width: 100% !important;
   }
 }
