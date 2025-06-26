@@ -9,7 +9,7 @@ h2 {
   vertical-align: baseline;
 }
 a {
-  color: currentColor;
+  color: #2196f3;
   text-decoration: none;
   cursor: pointer;
 }
@@ -42,6 +42,22 @@ figure {
 /* src/assets/css/main.css 또는 글로벌 CSS 파일 */
 body {
   font-family: 'Noto Sans KR', sans-serif;
+}
+
+.before-hyphen {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+
+  &[href] {
+    display: block;
+  }
+  &::before {
+    content: '- '; /* 여기에 원하는 내용을 넣습니다. 공백도 포함하여 텍스트와의 간격 조절 */
+    transform: translateY(-50%);
+    color: #444444; /* 하이픈 색상 지정 (선택 사항) */
+    // font-weight: bold;
+  }
 }
 @media (max-width: 786px) {
   #more_menu_btn {

@@ -1,12 +1,14 @@
 <!-- 로고 및 이미지 링크 -->
 <template>
-  <figure class="custom-figure flex flex-center">
+  <q-btn class="custom-figure flex flex-center" @click="btnClick">
     <img :src="imageLink" :alt="alt" />
     <figcaption v-if="caption">{{ caption }}</figcaption>
-  </figure>
+  </q-btn>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
 defineProps({
   imageLink: {
     type: String,
@@ -21,6 +23,11 @@ defineProps({
     default: '',
   },
 });
+const router = useRouter();
+const btnClick = () => {
+  console.log('버튼 클릭 !');
+  router.push('/portfolio/carrer/lisner');
+};
 </script>
 
 <style lang="scss" scoped>
@@ -35,5 +42,11 @@ defineProps({
 }
 .custom-figure:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 786px) {
+  .custom-figure:hover {
+    transform: scale(1.025);
+  }
 }
 </style>
