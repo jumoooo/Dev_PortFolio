@@ -6,13 +6,12 @@
       <PortfolioContents title="About">
         <template #body>
           <p>
-            2022년부터 Front-End 개발을 하고 있는 김준모입니다.
+            2022년부터 Web 개발을 하고 있는 김준모입니다.
             <br />
             마크업과 Vue.js를 이용한 Front-End 개발에 관해 관심이 많으며
-            최근에는 flex와 크로스 브라우징, 반응형 웹과 사용자 인터랙션에도
-            관심을 두고 있습니다.
+            최근에는 flex와 반응형 웹, 사용자 인터랙션에도 관심을 두고 있습니다.
             <br />
-            주로 사용하는 언어는 HTML, CSS, JavaScript 입니다.
+            주로 사용하는 언어는 HTML, CSS, JavaScript, MSSQL 입니다.
           </p>
           <!-- <q-btn class="btn-1" flat text-color="white" label="이력서 보러가기"
             ><q-icon name="arrow_forward" size="16px" />
