@@ -1,7 +1,7 @@
 <template>
   <!--해더-->
   <PortfolioHeader />
-  <section id="containar">
+  <section class="section-containar">
     <section id="about">
       <PortfolioContents title="About">
         <template #body>
@@ -40,7 +40,7 @@
       <PortfolioContents title="Personal Activities">
         <template #body>
           <div class="flex-wrap row q-col-gutter-md flex flex-start">
-            <div class="col-4" v-for="data in detailData" :key="data">
+            <div class="col-12 col-sm-4" v-for="data in detailData" :key="data">
               <div class="flip-container">
                 <Flipper>
                   <template #front>
@@ -119,7 +119,7 @@ div,
 strong {
   color: $primary-text-color;
 }
-#containar {
+.section-containar {
   display: block;
   line-height: 1.8;
   max-width: 1140px !important;
@@ -176,7 +176,7 @@ strong {
 }
 
 @media (max-width: 786px) {
-  #containar {
+  .section-containar {
     padding: 0 10px;
   }
 }

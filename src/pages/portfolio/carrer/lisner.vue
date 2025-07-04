@@ -1,6 +1,6 @@
 <template>
   <section class="section-intro"></section>
-  <section class="containar">
+  <section class="section-containar">
     <section class="section-info">
       <div class="introduction">
         <h1>회사 소개</h1>
@@ -38,10 +38,16 @@
           <li>DB : MSSQL</li>
         </ul>
       </div>
-      <div class="tab-card">
+      <div class="tab-warp">
         <h1>프로젝트</h1>
         <q-card>
-          <q-tabs
+          <CustomTabs
+            :mainTabs="mainTabs"
+            :mainDefault="mainDefault"
+            :subTabs="subTabs"
+            @clickImage="clickImage"
+          />
+          <!-- <q-tabs
             v-model="tab"
             dense
             class="text-grey"
@@ -52,14 +58,16 @@
             <q-tab name="mes" label="Cleber.MES" class="text-capitalize" />
             <q-tab name="web" label="Cleber.WEB" class="text-capitalize" />
           </q-tabs>
-
           <q-separator />
-
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="mes" class="q-pa-none">
-              <q-splitter v-model="splitterModel">
+              <q-splitter v-model="splitterModel" :horizontal="isMobileScreen">
                 <template v-slot:before>
-                  <q-tabs v-model="innerTab_Mes" vertical class="text-teal">
+                  <q-tabs
+                    v-model="innerTab_Mes"
+                    :vertical="!isMobileScreen"
+                    class="text-teal"
+                  >
                     <q-tab
                       name="mes_1"
                       icon="description"
@@ -88,8 +96,7 @@
                   <q-tab-panels
                     v-model="innerTab_Mes"
                     animated
-                    transition-prev="slide-down"
-                    transition-next="slide-up"
+                    :vertical="!isMobileScreen"
                   >
                     <q-tab-panel name="mes_1">
                       <h1 class="text-h4 q-mb-md">창성 MES 구축 및 개발</h1>
@@ -100,7 +107,6 @@
                       <p>- [자재 투입] 등 공정 화면 개발 및 현장 교육 진행</p>
                       <p>* 보안상 이미지를 참조할 수 없습니다.</p>
                     </q-tab-panel>
-
                     <q-tab-panel name="mes_2">
                       <h1 class="text-h4 q-mb-md">INPAC MES 개발</h1>
                       <q-separator />
@@ -147,9 +153,13 @@
             </q-tab-panel>
 
             <q-tab-panel name="web" class="q-pa-none">
-              <q-splitter v-model="splitterModel">
+              <q-splitter v-model="splitterModel" :horizontal="isMobileScreen">
                 <template v-slot:before>
-                  <q-tabs v-model="innerTab_Web" vertical class="text-teal">
+                  <q-tabs
+                    v-model="innerTab_Web"
+                    :vertical="!isMobileScreen"
+                    class="text-teal"
+                  >
                     <q-tab
                       name="web_1"
                       icon="description"
@@ -185,8 +195,7 @@
                   <q-tab-panels
                     v-model="innerTab_Web"
                     animated
-                    transition-prev="slide-down"
-                    transition-next="slide-up"
+                    :vertical="!isMobileScreen"
                   >
                     <q-tab-panel name="web_1">
                       <h1 class="text-h4 q-mb-md">동우 화인캠 레포트 재구축</h1>
@@ -199,7 +208,6 @@
                       </p>
                       <p>* 보안상 이미지를 참조할 수 없습니다.</p>
                     </q-tab-panel>
-
                     <q-tab-panel name="web_2">
                       <h1 class="tab-inner-title text-h4 q-mb-md">
                         INFAC SCM 구축 및 개발
@@ -327,20 +335,216 @@
                 </template>
               </q-splitter>
             </q-tab-panel>
-          </q-tab-panels>
+          </q-tab-panels> -->
         </q-card>
       </div>
     </section>
   </section>
+
+  <q-dialog v-model="isClickImage" v-if="!isMobileScreen">
+    <q-card class="dialog-card">
+      <q-card-section class="q-pt-none">
+        <img class="dialog-img" :src="selectedImgLink" />
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import CustomTabs from 'src/pages/components/CustomTabs.vue';
+import { useQuasar } from 'quasar';
+import { computed, ref, watch } from 'vue';
 
-const tab = ref('mes');
-const innerTab_Mes = ref('mes_1');
-const innerTab_Web = ref('web_1');
-const splitterModel = ref(10);
+const $q = useQuasar();
+
+const mainTabs = [
+  { name: 'mes', title: 'Cleber.MES' },
+  { name: 'web', title: 'Cleber.WEB' },
+];
+const mainDefault = 'mes';
+const subTabs = [
+  {
+    mainName: 'mes',
+    tabList: [
+      {
+        title: '창성 MES 구축',
+        content: [
+          '기여도 : 20%',
+          '창성 평택으로 파견',
+          '[자재 투입] 등 공정 화면 개발 및 현장 교육 진행',
+        ],
+        isImg: false,
+        imgs: [],
+      },
+      {
+        title: 'INPAC MES 개발',
+        content: [
+          '기여도 : 20%',
+          '본사에서 원격으로 진행',
+          '북미, 폴란드 팀과 협업하여 MES 개발 지원 진행',
+          '[자재 출하], [입하], [입고] 등 SCM 과 관련된 자재 이동 공정, 모니터링 화면 개발',
+        ],
+        isImg: true,
+        imgs: [
+          {
+            imgTitle: '발주 페이지',
+            imgLink: '/assets/lisner/lisner_mes_01.jpg',
+          },
+          {
+            imgTitle: '입하 페이지',
+            imgLink: '/assets/lisner/lisner_mes_02.jpg',
+          },
+          {
+            imgTitle: '입고 페이지',
+            imgLink: '/assets/lisner/lisner_mes_03.jpg',
+          },
+        ],
+      },
+      {
+        title: 'NVH MES 개발',
+        content: [
+          '기여도 : 20%',
+          '본사에서 원격으로 진행',
+          '북미팀과 협업하여 MES 개발 지원 진행',
+          '[자재 출하], [입하], [입고] 등 MES 자재 이동 공정, 모니터링 화면 개발',
+        ],
+        isImg: false,
+        imgs: [],
+      },
+    ],
+  },
+  {
+    mainName: 'web',
+    tabList: [
+      {
+        title: '동우 화인캠 레포트 재구축',
+        content: [
+          '기여도 : 20%',
+          '폐쇠망',
+          'MES 개발 된 대시보드를 WEB 으로 기능이관 작업 진행',
+        ],
+        isImg: false,
+        imgs: [],
+      },
+      {
+        title: 'INFAC SCM 구축 및 개발',
+        content: [
+          '기여도 : 100%, 단독진행',
+          '북미, 폴란드 각 사이트에 구축 및 개발',
+          '기존의 대시보드 기능만 하던 Cleber.WEB 에 SCM 기능 추가',
+          'DB 테이블 설계, 백엔드 및 프론트엔드 구현, 코어 기능 수정까지 직접 수행',
+          '실시간 데이터 관리 및 납품 기능을 강화하고, 고객사의 요구사항을 반영한 맞춤형 기능 추가.',
+          '현재 약 120개의 현대모비스 계열 납품처 고객사에서 사용 중이며, 업무 자동화로 인해 납품 관련 데이터 입력 시간이 단축, 데이터 입력 오류율이 감소함.',
+          '추가 stack : ZPL(제브라 프린트 언어) 사용',
+        ],
+        isImg: true,
+        imgs: [
+          {
+            imgTitle: 'SCM 발주 확인 페이지',
+            imgLink: '/assets/lisner/lisner_web_infac_01.jpg',
+          },
+          {
+            imgTitle: 'SCM 납품 등록 페이지',
+            imgLink: '/assets/lisner/lisner_web_infac_02.jpg',
+          },
+          {
+            imgTitle: 'SCM 납품 정보 관리 페이지',
+            imgLink: '/assets/lisner/lisner_web_infac_03.jpg',
+          },
+          {
+            imgTitle: 'SCM BOX 라벨 등록 페이지',
+            imgLink: '/assets/lisner/lisner_web_infac_04.jpg',
+          },
+          {
+            imgTitle: 'SCM PALLET 라벨 등록 페이지',
+            imgLink: '/assets/lisner/lisner_web_infac_05.jpg',
+          },
+        ],
+      },
+      {
+        title: 'NVH 대시보드 구축 및 개발',
+        content: [
+          '기여도 : 100%, 단독진행',
+          '북미 사이트에 원격으로 구축 및 화면 개발',
+          '북미팀과 협업하여 MES 개발 지원 진행',
+        ],
+        isImg: true,
+        imgs: [
+          {
+            imgTitle: 'NVH 대시보드',
+            imgLink: '/assets/lisner/lisner_web_nvh_01.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_nvh_02.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_nvh_03.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_nvh_04.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_nvh_05.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_nvh_06.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_nvh_07.jpg',
+          },
+        ],
+      },
+      {
+        title: 'EcoPro 대시보드 서버 구축 및 개발',
+        content: ['기여도 : 80%', '폐쇄망', '디자이너와 협업(Zeplin 사용)'],
+        isImg: false,
+        imgs: [
+          {
+            imgTitle: 'EcoPro 대시보드',
+            imgLink: '/assets/lisner/lisner_web_eco_01.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_eco_02.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_eco_03.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_eco_04.jpg',
+          },
+          {
+            imgTitle: '',
+            imgLink: '/assets/lisner/lisner_web_eco_05.jpg',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const isClickImage = ref(false);
+const selectedImgLink = ref('');
+const clickImage = imgLink => {
+  selectedImgLink.value = imgLink;
+  isClickImage.value = true;
+};
+const isMobileScreen = computed(() => $q.screen.lt.md);
+
+watch(isMobileScreen, (newVal, oldVal) => {
+  if (newVal !== oldVal) {
+    isClickImage.value = false;
+    selectedImgLink.value = '';
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -371,7 +575,7 @@ li {
 p {
   font-size: 13px;
 }
-.containar {
+.section-containar {
   display: block;
   line-height: 1.8;
   max-width: 1140px !important;
@@ -393,7 +597,7 @@ p {
   background-repeat: no-repeat;
   background-position: center;
 }
-.tab-card {
+.tab-warp {
   min-height: 700px;
   padding: 20px 0 50px 0;
   display: flex;
@@ -412,32 +616,23 @@ p {
     // flex-grow: 1;
     display: flex;
     flex-direction: column;
-    .q-tab-panels {
-      height: 100%;
-      flex-grow: 1;
-      display: flex;
-      .q-tab-panel {
-        height: 100%;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .q-splitter {
-        height: 100%;
-      }
-    }
   }
 }
-.full-height-splitter {
-  height: 100% !important; /* 중요: 고정 높이를 오버라이드하고 부모의 높이를 따르도록 합니다. */
-  flex-grow: 1; /* flex item으로 동작하여 남은 공간을 채웁니다. */
+.dialog-card {
+  max-width: 600px;
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
 }
-.inner-img {
-  width: auto;
-  height: auto;
+.dialog-img {
   max-width: 100%;
   max-height: 100%;
-  border-radius: 5px;
+  object-fit: contain;
+  display: block;
+}
+@media (max-width: 786px) {
+  .section-containar {
+    padding: 0 10px;
+  }
 }
 </style>
 
