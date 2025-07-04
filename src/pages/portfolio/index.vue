@@ -28,7 +28,7 @@
               class="figure-link-wrapper"
             >
               <PortfolioFigure
-                :image-link="'http://www.lisner.co.kr/theme/s007/img/logo-footer.png'"
+                :image-link="'/lisner_logo.jpg'"
                 :alt="'Lisner logo'"
               />
             </router-link>
@@ -71,7 +71,7 @@
 <script>
 const detailDatas = [
   {
-    imgLink: 'src/assets/pokeCard.jpg',
+    imgLink: '/assets/poke/pokeCard.jpg',
     workDate: '2025.04 ~ 현재',
     title: 'Poke Card Interaction Page',
     category: '개인 프로젝트',
