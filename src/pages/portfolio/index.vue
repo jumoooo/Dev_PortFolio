@@ -1,8 +1,8 @@
 <template>
   <!--해더-->
   <PortfolioHeader />
-  <section class="section-containar">
-    <section id="about">
+  <section class="section-containar" aria-label="portfolio contants containar">
+    <section id="about" aria-label="portfolio about">
       <PortfolioContents title="About">
         <template #body>
           <p>
@@ -19,7 +19,7 @@
         </template>
       </PortfolioContents>
     </section>
-    <section id="carrer">
+    <section id="carrer" aria-label="portfolio carrer">
       <PortfolioContents title="Carrer">
         <template #body
           ><div class="carrers-wrap">
@@ -36,7 +36,10 @@
         </template>
       </PortfolioContents>
     </section>
-    <section id="personal-activities">
+    <section
+      id="personal-activities"
+      aria-label="portfolio personal-activities"
+    >
       <PortfolioContents title="Personal Activities">
         <template #body>
           <div class="flex-wrap row q-col-gutter-md flex flex-start">

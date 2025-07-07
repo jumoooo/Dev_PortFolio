@@ -1,73 +1,11 @@
 <template>
   <q-layout view="hHh LpR fff" class="bg-grey-2">
-    <q-header bordered class="bg-white text-grey-9">
-      <q-toolbar>
-        <q-btn flat dense to="/">
-          <q-toolbar-title>
-            <q-avatar>
-              <img src="/logo.png" />
-            </q-avatar>
-            JM WEB
-          </q-toolbar-title>
-        </q-btn>
-        <q-space />
-
-        <q-btn stretch flat :label="$t('home')" to="/" />
-        <q-btn stretch flat :label="$t('portfolio')" to="/portfolio" />
-        <q-btn stretch flat :label="$t('hobby')">
-          <q-menu self="top left" :auto-close="false">
-            <q-list style="min-width: 140px">
-              <q-item clickable v-close-popup to="/pokeCardPage">
-                <q-item-section>{{ $t('poke-card') }}</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </q-btn>
-        <q-separator vertical class="q-my-md q-mr-md" />
-        <q-btn
-          v-if="!authStore.isAuthenticated"
-          no-caps
-          unelevated
-          rounded
-          color="primary"
-          :label="`${$t('log-in')} / ${$t('sign-up')}`"
-          @click="openAuthDialog"
-        />
-        <q-btn v-if="authStore.isAuthenticated" round flat>
-          <q-avatar>
-            <img
-              :src="
-                authStore.user.photoURL ||
-                generateDefaultPhotoURL(authStore.user.uid)
-              "
-            />
-          </q-avatar>
-          <q-menu>
-            <q-list style="min-width: 140px">
-              <q-item
-                v-if="authStore.user.emailVerified"
-                clickable
-                v-close-popup
-                :to="`/mypage/profile`"
-              >
-                <q-item-section>{{ $t('profile') }}</q-item-section>
-              </q-item>
-              <q-item v-else clickable v-close-popup :to="`/mypage/profile`">
-                <q-item-section class="text-red" @click="varifyEmail">{{
-                  $t('message.1003')
-                }}</q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup @click="handleOption">
-                <q-item-section>{{ $t('setting') }}</q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup @click="handleLogout">
-                <q-item-section>{{ $t('sign-out') }}</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </q-btn>
-      </q-toolbar>
-    </q-header>
+    <DefaultHeader
+      @openAuthDialog="openAuthDialog"
+      @varifyEmail="varifyEmail"
+      @handleOption="handleOption"
+      @handleLogout="handleLogout"
+    />
     <q-page-container :style="pageContainerStyless">
       <router-view />
     </q-page-container>
@@ -89,17 +27,14 @@
 </template>
 
 <script setup>
+import AuthDialog from 'src/components/auth/AuthDialog.vue';
+import OptionDialog from '../components/OptionDialog.vue';
+import DefaultHeader from 'src/components/layouts/DefaultHeader.vue';
+
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
-import {
-  logout,
-  generateDefaultPhotoURL,
-  sendVerificationEmail,
-} from 'src/services';
-
-import AuthDialog from 'src/components/auth/AuthDialog.vue';
-import OptionDialog from '../components/OptionDialog.vue';
+import { logout, sendVerificationEmail } from 'src/services';
 import { useQuasar } from 'quasar';
 import { updateUserOptions } from 'src/services';
 import { useAsyncState } from '@vueuse/core';
@@ -116,7 +51,6 @@ const pageContainerStyless = computed(() => ({
   maxWidth: route.meta?.width || '1080px',
   margin: '0 auto',
 }));
-// console.log(pageContainerStyless.value);
 const authDialog = ref(false);
 const openAuthDialog = () => (authDialog.value = true);
 const handleLogout = async () => {

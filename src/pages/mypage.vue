@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <div class="main_wrap row q-col-gutter-lg">
-      <section aria-label="mypage side menu">
+      <section aria-label="mypage side menu" class="col-md-3 col-12">
         <div class="col-grow">
           <BaseCard>
             <q-list bordered separator>
@@ -27,7 +27,7 @@
           </BaseCard>
         </div>
       </section>
-      <div class="mypage-content col-xs-12 col-lg-8">
+      <div class="mypage-content col-md-9 col-12">
         <router-view />
       </div>
     </div>
