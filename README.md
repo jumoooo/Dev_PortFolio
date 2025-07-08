@@ -5,12 +5,18 @@ Vue3의 Composition API와 Quasar 프레임워크의 컴포넌트 기반 UI 시�
 
 👉 실제 사이트 보러가기: [https://thehamo.com]
 
-## 🚀 기술 스택
+## 기술 스택
 
 - **Vue 3** (Composition API)
 - **Quasar Framework** (Vite 기반 빌드)
 - **Firebase Hosting**
-- **TypeScript**
+- **JavaScript**
+- **Algoli** (검색)
+
+## 사용 API 및 모듈
+- **Pokémon TCG API** (포켓몬 카드 API)
+- **i18n** (다국어)
+
 
 ## Install the dependencies
 
