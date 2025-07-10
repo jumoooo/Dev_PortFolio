@@ -1,5 +1,5 @@
 <template>
-  <header id="header">
+  <div class="protfolio-header">
     <div class="title-text">
       <h1>김준모</h1>
       <h2>
@@ -7,13 +7,13 @@
         <span> rnsdlsdmltk@gmail.com </span>
       </h2>
     </div>
-  </header>
+  </div>
 </template>
 
 <script setup></script>
 
 <style lang="scss" scoped>
-#header {
+.protfolio-header {
   width: 100%;
   height: 300px;
   display: flex;

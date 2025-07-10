@@ -6,7 +6,7 @@
       @handleOption="handleOption"
       @handleLogout="handleLogout"
     />
-
+    {{ 'only' }}
     <q-page-container :style="pageContainerStyless">
       <router-view />
     </q-page-container>
@@ -22,7 +22,7 @@
 <script setup>
 import AuthDialog from 'src/components/auth/AuthDialog.vue';
 import OptionDialog from '../components/OptionDialog.vue';
-import DefaultHeader from 'src/components/layouts/DefaultHeader.vue';
+import DefaultHeader from 'src/components/commen_layouts/DefaultHeader.vue';
 
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';

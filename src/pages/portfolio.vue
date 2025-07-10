@@ -1,6 +1,6 @@
 <template>
   <!--해더-->
-  <PortfolioHeader />
+  <PortfolioMainTitle />
   <section class="section-containar" aria-label="portfolio contants containar">
     <section id="about" aria-label="portfolio about">
       <PortfolioContents title="About">
@@ -13,6 +13,16 @@
             <br />
             주로 사용하는 언어는 HTML, CSS, JavaScript, MSSQL 입니다.
           </p>
+          <q-btn
+            class="btn-notion"
+            text-color="white"
+            href="https://purple-paint-fa5.notion.site/22991681848380778296cd0d11f40bc8?source=copy_link"
+          />
+          <q-btn
+            class="btn-github"
+            text-color="white"
+            href="https://github.com/jumoooo"
+          />
           <!-- <q-btn class="btn-1" flat text-color="white" label="이력서 보러가기"
             ><q-icon name="arrow_forward" size="16px" />
           </q-btn> -->
@@ -23,10 +33,7 @@
       <PortfolioContents title="Carrer">
         <template #body
           ><div class="carrers-wrap">
-            <router-link
-              :to="'/portfolio/carrer/lisner'"
-              class="figure-link-wrapper"
-            >
+            <router-link :to="'/carrer/lisner'" class="figure-link-wrapper">
               <PortfolioFigure
                 :image-link="'/lisner_logo.jpg'"
                 :alt="'Lisner logo'"
@@ -43,7 +50,11 @@
       <PortfolioContents title="Personal Activities">
         <template #body>
           <div class="flex-wrap row q-col-gutter-md flex flex-start">
-            <div class="col-12 col-sm-4" v-for="data in detailData" :key="data">
+            <div
+              class="col-12 col-sm-4"
+              v-for="(data, index) in detailData"
+              :key="index"
+            >
               <div class="flip-container">
                 <Flipper>
                   <template #front>
@@ -71,8 +82,50 @@
   </section>
 </template>
 
-<script>
-const detailDatas = [
+<script setup>
+import PortfolioMainTitle from './portfolio/components/PortfolioMainTitle.vue';
+import PortfolioContents from './portfolio/components/PortfolioContents.vue';
+import PortfolioFigure from './portfolio/components/PortfolioFigure.vue';
+import Flipper from './components/Flipper.vue';
+import PortfolioCardPreview from './portfolio/components/PortfolioCardPreview.vue';
+import PortfolioCardDetail from './portfolio/components/PortfolioCardDetail.vue';
+
+import { ref } from 'vue';
+
+let detailDatas = [
+  {
+    imgLink: '/assets/bulletin_board.jpg',
+    workDate: '2025.03 ~ 06',
+    title: 'Bulletin Board Page',
+    category: '개인 프로젝트',
+    detailContents: [
+      {
+        id: 1,
+        type: 'div',
+        content: '게시판 형식의 페이지',
+      },
+      {
+        id: 2,
+        type: 'div',
+        content: '인프런 Vue 3 강좌 참고',
+      },
+      {
+        id: 3,
+        type: 'div',
+        content: 'Quasar, Vue3, Firebase, Algolia 사용',
+      },
+      {
+        id: 4,
+        type: 'a',
+        content: 'https://thehamo.com/',
+      },
+      {
+        id: 4,
+        type: 'a',
+        content: 'https://github.com/jumoooo/Dev_PortFolio',
+      },
+    ],
+  },
   {
     imgLink: '/assets/poke/pokeCard.jpg',
     workDate: '2025.04 ~ 현재',
@@ -82,7 +135,7 @@ const detailDatas = [
       {
         id: 1,
         type: 'div',
-        content: '포켓몬 TCG API',
+        content: '포켓몬 TCG API 활용',
       },
       {
         id: 2,
@@ -97,18 +150,6 @@ const detailDatas = [
     ],
   },
 ];
-</script>
-
-<script setup>
-import PortfolioHeader from './components/PortfolioHeader.vue';
-import PortfolioContents from './components/PortfolioContents.vue';
-import PortfolioFigure from './components/PortfolioFigure.vue';
-import Flipper from '../components/Flipper.vue';
-import PortfolioCardPreview from './components/PortfolioCardPreview.vue';
-import PortfolioCardDetail from './components/PortfolioCardDetail.vue';
-
-import { ref } from 'firebase/storage';
-
 const detailData = ref(detailDatas);
 </script>
 
@@ -130,6 +171,19 @@ strong {
   section {
     margin-top: 60px;
   }
+}
+.btn-github,
+.btn-notion {
+  margin-top: 10px;
+  min-width: 50px;
+  min-height: 50px;
+}
+.btn-notion {
+  background-image: url(/icons/notion.svg);
+}
+.btn-github {
+  background-image: url(/icons/github.svg);
+  margin-left: 10px;
 }
 .btn-1 {
   background-color: $accent-color;
@@ -187,6 +241,6 @@ strong {
 
 <route lang="yaml">
 meta:
-  layout: onlyHeaderLayout
+  layout: hiLayout
   width: 100%
 </route>

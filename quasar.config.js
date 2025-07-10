@@ -101,7 +101,13 @@ module.exports = configure(function (/* ctx */) {
             exclude: ['**/components/**'],
           },
         ],
-        ['vite-plugin-vue-layouts', {}],
+        [
+          'vite-plugin-vue-layouts',
+          {
+            layoutsDirs: 'src/layouts', // 레이아웃 파일들이 있는 디렉토리 지정
+            defaultLayout: 'default', // 필요한 경우 기본 레이아웃 지정 (선택 사항)
+          },
+        ],
       ],
     },
 

@@ -356,7 +356,7 @@ import { useQuasar } from 'quasar';
 import { computed, ref, watch } from 'vue';
 
 const $q = useQuasar();
-
+console.log('HIII');
 const mainTabs = [
   { name: 'mes', title: 'Cleber.MES' },
   { name: 'web', title: 'Cleber.WEB' },
@@ -638,6 +638,6 @@ p {
 
 <route lang="yaml">
 meta:
-  layout: onlyHeaderLayout
+  layout: hiLayout
   width: 100%
 </route>

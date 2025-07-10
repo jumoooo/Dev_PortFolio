@@ -17,6 +17,7 @@
         </span>
       </div>
     </q-footer>
+
     <AuthDialog v-model="authDialog" />
     <OptionDialog
       v-model="optionDialog"
@@ -29,7 +30,7 @@
 <script setup>
 import AuthDialog from 'src/components/auth/AuthDialog.vue';
 import OptionDialog from '../components/OptionDialog.vue';
-import DefaultHeader from 'src/components/layouts/DefaultHeader.vue';
+import DefaultHeader from 'src/components/commen_layouts/DefaultHeader.vue';
 
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
@@ -48,7 +49,7 @@ const route = useRoute();
 const $q = useQuasar();
 
 const pageContainerStyless = computed(() => ({
-  maxWidth: route.meta?.width || '1080px',
+  // maxWidth: route.meta?.width || '1080px',
   margin: '0 auto',
 }));
 const authDialog = ref(false);
