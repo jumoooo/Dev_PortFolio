@@ -6,12 +6,15 @@
       <PortfolioContents title="About">
         <template #body>
           <p>
-            2022년부터 Web 개발을 하고 있는 김준모입니다.
+            {{ $t('message.1024') }}
+            <!-- 2022년부터 Web 개발을 하고 있는 김준모입니다. -->
             <br />
-            마크업과 Vue.js를 이용한 Front-End 개발에 관해 관심이 많으며
-            최근에는 flex와 반응형 웹, 사용자 인터랙션에도 관심을 두고 있습니다.
+            {{ $t('message.1025') }}
+            <!-- 마크업과 Vue.js를 이용한 Front-End 개발에 관해 관심이 많으며
+            최근에는 flex와 반응형 웹, 사용자 인터랙션에도 관심을 두고 있습니다. -->
             <br />
-            주로 사용하는 언어는 HTML, CSS, JavaScript, MSSQL 입니다.
+            {{ $t('message.1026') }}
+            <!-- 주로 사용하는 언어는 HTML, CSS, JavaScript, MSSQL 입니다. -->
           </p>
           <q-btn
             class="btn-notion"
@@ -97,22 +100,22 @@ let detailDatas = [
     imgLink: '/assets/bulletin_board.jpg',
     workDate: '2025.03 ~ 06',
     title: 'Bulletin Board Page',
-    category: '개인 프로젝트',
+    category: 'message.1030', // 개인 프로젝트
     detailContents: [
       {
         id: 1,
         type: 'div',
-        content: '게시판 형식의 페이지',
+        content: 'message.1027', // 게시판 형식의 페이지
       },
       {
         id: 2,
         type: 'div',
-        content: '인프런 Vue 3 강좌 참고',
+        content: 'message.1028', // 인프런 Vue 3 강좌 참고
       },
       {
         id: 3,
         type: 'div',
-        content: 'Quasar, Vue3, Firebase, Algolia 사용',
+        content: 'Quasar, Vue3, Firebase, Algolia',
       },
       {
         id: 4,
@@ -128,19 +131,19 @@ let detailDatas = [
   },
   {
     imgLink: '/assets/poke/pokeCard.jpg',
-    workDate: '2025.04 ~ 현재',
+    workDate: 'message.1029', // 2025.04 ~ 현재
     title: 'Poke Card Interaction Page',
-    category: '개인 프로젝트',
+    category: 'message.1030', // 개인 프로젝트
     detailContents: [
       {
         id: 1,
         type: 'div',
-        content: '포켓몬 TCG API 활용',
+        content: 'message.1031', // 포켓몬 TCG API 활용
       },
       {
         id: 2,
         type: 'div',
-        content: '인터렉션 연습 페이지',
+        content: 'message.1032', // 인터렉션 연습 페이지
       },
       {
         id: 3,

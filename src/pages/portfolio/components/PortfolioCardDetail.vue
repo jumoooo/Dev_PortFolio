@@ -1,19 +1,19 @@
 <template>
-  <p>{{ workDate }}</p>
-  <p>{{ title }}</p>
-  <strong class="catagory">{{ category }}</strong>
+  <p>{{ $t(workDate) }}</p>
+  <p>{{ $t(title) }}</p>
+  <strong class="catagory">{{ $t(category) }}</strong>
   <div class="detail-content">
     <template v-for="content in detailContents" :key="content.id">
       <div class="detail-item-wrapper">
         <span v-if="content['type'] == 'div'" class="before-hyphen">{{
-          content['content']
+          $t(content['content'])
         }}</span>
         <a
           v-else-if="content['type'] == 'a'"
           class="before-hyphen"
           :href="content['content']"
           target="_blank"
-          >{{ content['content'] }}</a
+          >{{ $t(content['content']) }}</a
         >
       </div>
     </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="protfolio-header">
     <div class="title-text">
-      <h1>김준모</h1>
+      <h1>{{ $t('kjm') }}</h1>
       <h2>
         <q-icon size="sm" color="#1f1f1f" name="email" class="q-mr-sm" />
         <span> rnsdlsdmltk@gmail.com </span>

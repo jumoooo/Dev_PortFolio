@@ -4,8 +4,8 @@
     <q-space />
     <q-input
       outlined
-      label="포켓몬 명으로 검색"
-      hint="영문으로 검색 가능"
+      :label="$t('message.1081')"
+      :hint="$t('message.1082')"
       dense
       class="q-ma-lg row-3"
       v-model="cardNameModel"
@@ -13,6 +13,8 @@
       :loading="isLoading"
       @keypress.enter.prevent="$emit('enterPress')"
     />
+    <!-- message.1081 = '포켓몬 명으로 검색'-->
+    <!-- message.1082 = '영문으로 검색 가능'-->
   </div>
 </template>
 

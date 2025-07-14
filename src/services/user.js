@@ -20,5 +20,7 @@ export async function updateUserOptions(uid, params) {
     await updateDoc(doc(db, 'users', uid), {
       language: params.language,
     });
+
+    // localStorage.setItem('locale', params.language);
   }
 }

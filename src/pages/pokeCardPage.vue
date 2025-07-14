@@ -4,10 +4,11 @@
       <div class="col q-gutter-y-lg">
         <pokeHeader
           :isLoading="isLoading"
-          :placeholder="'* 예시 : Ditto'"
+          :placeholder="$t('message.1080')"
           v-model:cardName="cardName"
           @enterPress="searchCard"
         />
+        <!-- message.1080 = '* 예시 : Ditto'-->
       </div>
 
       <!-- 카드 리스트 -->

@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 import { useLocalStorage, StorageSerializers } from '@vueuse/core';
-import { getUserById } from 'src/services';
 import i18n from 'src/utils/i18n/i18n';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -28,7 +27,9 @@ export const useAuthStore = defineStore('auth', () => {
       // 다국어 설정
       if (userDbData?.language) {
         i18n.global.locale = userDbData.language;
+        localStorage.setItem('locale', userDbData.language);
       } else {
+        localStorage.setItem('locale', 'ko');
         i18n.global.locale = 'ko';
       }
     } else {

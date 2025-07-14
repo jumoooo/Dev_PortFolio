@@ -13,17 +13,17 @@
 
       <q-btn stretch flat to="/">
         <span v-if="!isMobileScreen">{{ $t('home') }}</span>
-        <q-tooltip v-if="!isMobileScreen"> {{ $t('home') }} </q-tooltip>
+        <q-tooltip v-if="isMobileScreen"> {{ $t('home') }} </q-tooltip>
         <q-icon name="home" v-if="isMobileScreen" />
       </q-btn>
       <q-btn stretch flat to="/portfolio">
         <span v-if="!isMobileScreen">{{ $t('portfolio') }}</span>
-        <q-tooltip v-if="!isMobileScreen"> {{ $t('portfolio') }} </q-tooltip>
+        <q-tooltip v-if="isMobileScreen"> {{ $t('portfolio') }} </q-tooltip>
         <q-icon name="assignment" v-if="isMobileScreen" />
       </q-btn>
       <q-btn stretch flat>
         <span v-if="!isMobileScreen">{{ $t('hobby') }}</span>
-        <q-tooltip v-if="!isMobileScreen"> {{ $t('hobby') }} </q-tooltip>
+        <q-tooltip v-if="isMobileScreen"> {{ $t('hobby') }} </q-tooltip>
         <q-icon name="sports_esports" v-if="isMobileScreen" />
         <q-menu self="top left" :auto-close="false">
           <q-list style="min-width: 140px">
@@ -40,9 +40,14 @@
         unelevated
         rounded
         color="primary"
-        :label="`${$t('log-in')} / ${$t('sign-up')}`"
         @click="$emit('openAuthDialog')"
-      />
+      >
+        <span v-if="!isMobileScreen">{{
+          `${$t('log-in')} / ${$t('sign-up')}`
+        }}</span>
+        <q-tooltip v-if="isMobileScreen"> {{ $t('log-in') }} </q-tooltip>
+        <q-icon name="person" v-if="isMobileScreen" />
+      </q-btn>
       <q-btn v-if="authStore.isAuthenticated" round flat>
         <q-avatar>
           <img

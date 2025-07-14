@@ -1,8 +1,8 @@
 <template>
   <img class="front-img" :src="imgLink" />
   <div class="front-title flex">
-    <p>{{ title }}</p>
-    <strong>{{ category }}</strong>
+    <p>{{ $t(title) }}</p>
+    <strong>{{ $t(category) }}</strong>
   </div>
 </template>
 

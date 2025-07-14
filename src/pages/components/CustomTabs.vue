@@ -11,7 +11,7 @@
       <!--mainTab 상단 Tab 부분-->
       <q-tab
         :name="mainTab['name']"
-        :label="mainTab['title']"
+        :label="$t(mainTab['title'])"
         class="text-capitalize"
       />
     </template>
@@ -37,7 +37,7 @@
                     <q-tab
                       :name="`${subTab['mainName'] + '_' + (index_sub + 1)}`"
                       icon="description"
-                      :label="subTabDtl['title']"
+                      :label="$t(subTabDtl['title'])"
                       class="sub-tab text-capitalize"
                       style="white-space: normal; word-break: break-word"
                     />
@@ -62,7 +62,9 @@
                     :name="`${subTab['mainName'] + '_' + (index + 1)}`"
                   >
                     <!--내용 title-->
-                    <h1 class="text-h4 q-mb-md">{{ subTabDtl['title'] }}</h1>
+                    <h1 class="text-h4 q-mb-md">
+                      {{ $t(subTabDtl['title']) }}
+                    </h1>
                     <q-separator />
                     <br />
                     <!--내용 contents-->
@@ -70,7 +72,7 @@
                       v-for="(content, idx) in subTabDtl['content']"
                       :key="idx"
                     >
-                      <p>{{ '- ' + content }}</p>
+                      <p>{{ '- ' + $t(content) }}</p>
                     </template>
                     <!--내용 image-->
                     <template v-if="subTabDtl['isImg'] == true">
@@ -79,7 +81,7 @@
                         :key="idx_img"
                       >
                         <h2 v-if="img['imgTitle']">
-                          {{ img['imgTitle'] }}
+                          {{ $t(img['imgTitle']) }}
                         </h2>
 
                         <img
@@ -90,7 +92,7 @@
                       </template>
                     </template>
                     <template v-else>
-                      <p>* 보안상 이미지를 참조할 수 없습니다.</p>
+                      <p>* {{ $t('message.1079') }}</p>
                     </template>
                   </q-tab-panel>
                 </template>

@@ -6,7 +6,7 @@ import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 import { useAuthStore } from 'src/stores/auth';
-import i18n from 'src/utils/i18n/i18n'; // <-- 여기서 i18n 인스턴스를 직접 가져옴
+// import i18n from 'src/utils/i18n/i18n'; // <-- 여기서 i18n 인스턴스를 직접 가져옴
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA75UioB4LkxZBOmmJhIvUvRjfUrySC6nk',

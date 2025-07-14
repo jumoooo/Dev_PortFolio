@@ -6,7 +6,6 @@
       @handleOption="handleOption"
       @handleLogout="handleLogout"
     />
-    {{ 'only' }}
     <q-page-container :style="pageContainerStyless">
       <router-view />
     </q-page-container>
