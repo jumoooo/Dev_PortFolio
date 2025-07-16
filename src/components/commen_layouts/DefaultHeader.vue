@@ -99,4 +99,9 @@ const isMobileScreen = computed(() => $q.screen.lt.md);
 defineEmits(['openAuthDialog', 'varifyEmail', 'handleOption', 'handleLogout']);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.q-header {
+  position: fixed;
+  top: 0;
+}
+</style>

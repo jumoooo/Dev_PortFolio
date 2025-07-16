@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh LpR fff" class="bg-grey-2">
+  <q-layout view="hHh Lpr fff" class="bg-grey-2">
     <DefaultHeader
       @openAuthDialog="openAuthDialog"
       @varifyEmail="varifyEmail"
@@ -10,7 +10,7 @@
       <router-view />
     </q-page-container>
     <q-footer class="text-black bg-grey-2 flex flex-center">
-      <div class="footer-title flex flex-center">
+      <div class="footer-title">
         <q-icon size="sm" color="#1f1f1f" name="email" class="q-mr-sm" />
         <span class="footer-email" style="font-size: 22px"
           >rnsdlsdmltk@gmail.com
@@ -49,7 +49,7 @@ const route = useRoute();
 const $q = useQuasar();
 
 const pageContainerStyless = computed(() => ({
-  // maxWidth: route.meta?.width || '1080px',
+  maxWidth: route.meta?.width || '1080px',
   margin: '0 auto',
 }));
 const authDialog = ref(false);
@@ -94,5 +94,9 @@ const handleSubmit = newLang => {
 <style lang="scss" scoped>
 .q-footer {
   height: 250px;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
+  width: 100%;
 }
 </style>

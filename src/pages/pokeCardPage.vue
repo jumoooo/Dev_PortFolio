@@ -14,13 +14,18 @@
       <!-- 카드 리스트 -->
       <div class="card-list-wrapper q-pa-md q-mt-md">
         <div class="card-list-container">
-          <pokeCard
-            v-for="card of cardList"
-            :key="card.id"
-            :image-url="card.images.small"
-            class="card-item"
-            @click="selectedCard = card"
-          />
+          <div v-if="isLoading" class="loading-wrapper">
+            <q-spinner color="primary" size="40px" />
+          </div>
+          <template v-else>
+            <pokeCard
+              v-for="card of cardList"
+              :key="card.id"
+              :image-url="card.images.small"
+              class="card-item"
+              @click="selectedCard = card"
+            />
+          </template>
         </div>
         <div
           v-if="selectedCard"
@@ -204,5 +209,12 @@ const enlargedCardSize = computed(() => {
   justify-content: center;
   align-items: center;
   border-radius: 12px;
+}
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
 }
 </style>

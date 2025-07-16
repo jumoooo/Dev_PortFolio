@@ -24,9 +24,13 @@
     "1021": "Profile modification completed.",
     "1022": "Email modification completed.",
     "1023": "Your password has been changed.",
-    "1024": "I'm Kim Junmo, who has been developing the web since 2022.",
-    "1025": "I'm interested in developing front-end using markup and Vue.js, and recently I'm also interested in flex, reactive web, and user interaction.",
-    "1026": "The most commonly used languages are HTML, CSS, JavaScript, and MSSQL.",
+
+    "1024": "I'm Junmo Kim, who has gained front-end experience focusing on developing SPA based on Vue.js since 2022.",
+    "1025": "I have experience working with REST API using Nest.js and MSSQL with the backend, and I also have an understanding of query optimization and validation logic.",
+    "1025_1": "With the experience of projects in various countries, we have a history of multilingual projects.",
+    "1026": "Currently, we are learning with an interest in improving component design, accessibility, and optimizing web performance.",
+    "1026_1": "The most commonly used languages are HTML, SCSS, JavaScript, and MSSQL.",
+
     "1027": "a bulletin board-style page",
     "1028": "Refer to the Inflearn Vue 3 course",
     "1029": "2025.04 ~ present",

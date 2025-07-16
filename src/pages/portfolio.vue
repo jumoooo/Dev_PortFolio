@@ -7,24 +7,29 @@
         <template #body>
           <p>
             {{ $t('message.1024') }}
-            <!-- 2022년부터 Web 개발을 하고 있는 김준모입니다. -->
+            <!-- '2022년부터 Vue.js 기반의 SPA 개발을 중심으로 프론트엔드 경험을 쌓아온 김준모입니다.' -->
             <br />
             {{ $t('message.1025') }}
-            <!-- 마크업과 Vue.js를 이용한 Front-End 개발에 관해 관심이 많으며
-            최근에는 flex와 반응형 웹, 사용자 인터랙션에도 관심을 두고 있습니다. -->
+            <!-- '백엔드와는 Nest.js 및 MSSQL을 이용한 REST API 연동 경험이 있으며, 쿼리 최적화 및 유효성 검증 로직에도 이해를 갖고 있습니다.' -->
+            <br />
+            {{ $t('message.1025_1') }}
+            <!-- '다양한 국가의 프로젝트 경험으로 다국어가 적용된 프로젝트 진행한 이력이 있습니다.' -->
             <br />
             {{ $t('message.1026') }}
-            <!-- 주로 사용하는 언어는 HTML, CSS, JavaScript, MSSQL 입니다. -->
+            <!-- '현재는 컴포넌트 설계 개선과 접근성, 웹 성능 최적화에 관심을 두고 학습 중입니다.' -->
+            <br />
+            {{ $t('message.1026_1') }}
+            <!-- '주로 사용하는 언어는 HTML, SCSS, JavaScript, MSSQL 입니다.' -->
           </p>
           <q-btn
             class="btn-notion"
             text-color="white"
-            href="https://purple-paint-fa5.notion.site/22991681848380778296cd0d11f40bc8?source=copy_link"
+            href="https://purple-paint-fa5.notion.site/1cb89dd2fd714917845c3410716b55d7?source=copy_link"
           />
           <q-btn
             class="btn-github"
             text-color="white"
-            href="https://github.com/jumoooo"
+            href="https://github.com/jumoooo/Dev_PortFolio"
           />
           <!-- <q-btn class="btn-1" flat text-color="white" label="이력서 보러가기"
             ><q-icon name="arrow_forward" size="16px" />

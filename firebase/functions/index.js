@@ -110,6 +110,7 @@ exports.onCreateUser = functions
   .region(region)
   .auth.user()
   .onCreate(user => {
+    // logger.log('## user ## : ', user);
     const isPasswordProvider = user.providerData.some(
       userInfo => userInfo.providerId === 'password',
     );
@@ -124,6 +125,7 @@ exports.onCreateUser = functions
       displayName,
       photoURL,
       createdAt: Timestamp.fromDate(new Date(user.metadata.creationTime)),
+      language: 'ko',
     });
   });
 
@@ -131,6 +133,7 @@ exports.onDeleteUser = functions
   .region(region)
   .auth.user()
   .onDelete(user => {
+    // logger.log('## user ## : ', user);
     db.doc(`users/${user.uid}`).delete();
   });
 

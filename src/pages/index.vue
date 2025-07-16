@@ -101,7 +101,7 @@ const loadMore = () => {
 };
 const handleIntersectionObserver = ([{ isIntersecting }]) => {
   if (isIntersecting && isLoadMore.value) {
-    console.log('### handleIntersectionObserver ###');
+    // console.log('### handleIntersectionObserver ###');
     loadMore();
   }
 };

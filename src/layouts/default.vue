@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lff" class="bg-grey-2">
+  <q-layout view="hHh Lpr lff" class="bg-grey-2">
     <DefaultHeader
       @openAuthDialog="openAuthDialog"
       @varifyEmail="varifyEmail"
@@ -42,6 +42,12 @@ const $q = useQuasar();
 const pageContainerStyless = computed(() => ({
   maxWidth: route.meta?.width || '1080px',
   margin: '0 auto',
+  // overflowY: 'auto',
+
+  // maxWidth: route.meta?.width || '1080px',
+  // margin: '0 auto',
+  // height: 'calc(100vh - 64px)', // 헤더 높이만큼 빼기
+  // overflowY: 'auto',
 }));
 const authDialog = ref(false);
 const openAuthDialog = () => (authDialog.value = true);
@@ -82,3 +88,5 @@ const handleSubmit = newLang => {
   updateOptions(0, authStore.user?.uid, { language: newLang });
 };
 </script>
+
+<style lang="scss" scoped></style>
