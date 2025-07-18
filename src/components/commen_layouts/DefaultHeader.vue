@@ -101,7 +101,9 @@ defineEmits(['openAuthDialog', 'varifyEmail', 'handleOption', 'handleLogout']);
 
 <style lang="scss" scoped>
 .q-header {
-  position: fixed;
+  position: relative;
   top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 </style>

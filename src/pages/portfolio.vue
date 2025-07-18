@@ -24,7 +24,7 @@
           <q-btn
             class="btn-notion"
             text-color="white"
-            href="https://purple-paint-fa5.notion.site/1cb89dd2fd714917845c3410716b55d7?source=copy_link"
+            href="https://purple-paint-fa5.notion.site/1cb89dd2fd714917845c3410716b55d7"
           />
           <q-btn
             class="btn-github"

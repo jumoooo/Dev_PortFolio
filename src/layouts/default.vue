@@ -1,14 +1,16 @@
 <template>
-  <q-layout view="hHh Lpr lff" class="bg-grey-2">
+  <q-layout class="main-layout bg-grey-2">
     <DefaultHeader
       @openAuthDialog="openAuthDialog"
       @varifyEmail="varifyEmail"
       @handleOption="handleOption"
       @handleLogout="handleLogout"
     />
-    <q-page-container :style="pageContainerStyless">
-      <router-view />
-    </q-page-container>
+    <div class="container-wrap">
+      <q-page-container :style="pageContainerStyless" class="content-section">
+        <router-view />
+      </q-page-container>
+    </div>
     <AuthDialog v-model="authDialog" />
     <OptionDialog
       v-model="optionDialog"
@@ -42,12 +44,8 @@ const $q = useQuasar();
 const pageContainerStyless = computed(() => ({
   maxWidth: route.meta?.width || '1080px',
   margin: '0 auto',
-  // overflowY: 'auto',
-
-  // maxWidth: route.meta?.width || '1080px',
-  // margin: '0 auto',
-  // height: 'calc(100vh - 64px)', // 헤더 높이만큼 빼기
-  // overflowY: 'auto',
+  padding: '0',
+  overflow: 'hidden',
 }));
 const authDialog = ref(false);
 const openAuthDialog = () => (authDialog.value = true);
@@ -88,5 +86,19 @@ const handleSubmit = newLang => {
   updateOptions(0, authStore.user?.uid, { language: newLang });
 };
 </script>
+<style lang="scss">
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100vh;
+}
+</style>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container-wrap {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+</style>

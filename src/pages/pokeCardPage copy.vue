@@ -1,5 +1,5 @@
 <template>
-  <div padding>
+  <q-page padding>
     <div class="main-wrap">
       <div class="col q-gutter-y-lg">
         <pokeHeader
@@ -58,7 +58,7 @@
         />
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
