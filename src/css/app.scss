@@ -43,6 +43,9 @@ figure {
   background-color: var(--main-color);
 }
 /* src/assets/css/main.css 또는 글로벌 CSS 파일 */
+.q-layout > header {
+  position: relative !important;
+}
 body {
   font-family: 'Noto Sans KR', sans-serif;
 }

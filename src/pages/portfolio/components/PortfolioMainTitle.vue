@@ -1,5 +1,5 @@
 <template>
-  <div class="protfolio-header">
+  <div class="protfolio-banner">
     <div class="title-text">
       <h1>{{ $t('kjm') }}</h1>
       <h2>
@@ -13,7 +13,7 @@
 <script setup></script>
 
 <style lang="scss" scoped>
-.protfolio-header {
+.protfolio-banner {
   width: 100%;
   height: 300px;
   display: flex;

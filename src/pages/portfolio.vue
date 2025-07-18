@@ -1,5 +1,5 @@
 <template>
-  <!--해더-->
+  <!--배너-->
   <PortfolioMainTitle />
   <section class="section-containar" aria-label="portfolio contants containar">
     <section id="about" aria-label="portfolio about">
@@ -249,6 +249,6 @@ strong {
 
 <route lang="yaml">
 meta:
-  layout: hiLayout
+  layout: FooterLayout
   width: 100%
 </route>

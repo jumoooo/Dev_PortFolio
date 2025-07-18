@@ -1,25 +1,32 @@
 <template>
-  <q-layout class="main-layout bg-grey-2">
-    <q-header bordered class="bg-white text-grey-9">
+  <div class="main-layout bg-grey-2">
+    <header bordered class="bg-white text-grey-9">
       <DefaultHeaderToolbar
         @openAuthDialog="openAuthDialog"
         @varifyEmail="varifyEmail"
         @handleOption="handleOption"
         @handleLogout="handleLogout"
       />
-    </q-header>
-    <div class="container-wrap">
-      <q-page-container :style="pageContainerStyless" class="content-section">
-        <router-view />
-      </q-page-container>
-    </div>
+    </header>
+    <section :style="pageContainerStyless" class="content-section">
+      <router-view />
+      <footer class="hi-footer text-black bg-grey-2 flex flex-center">
+        <div class="footer-title">
+          <q-icon size="sm" color="#1f1f1f" name="email" class="q-mr-sm" />
+          <span class="footer-email" style="font-size: 22px"
+            >rnsdlsdmltk@gmail.com
+          </span>
+        </div>
+      </footer>
+    </section>
+
     <AuthDialog v-model="authDialog" />
     <OptionDialog
       v-model="optionDialog"
       v-model:language="language"
-      @submit="handleSubmit"
+      @submit="optionSubmit"
     />
-  </q-layout>
+  </div>
 </template>
 
 <script setup>
@@ -43,14 +50,17 @@ const authStore = useAuthStore();
 const route = useRoute();
 const $q = useQuasar();
 
+// 모바일 or 모니터 등 해상도에 따른 감지
+
+// content-section Style 부분
 const pageContainerStyless = computed(() => ({
   maxWidth: route.meta?.width || '1080px',
   margin: '0 auto',
   padding: '0',
-  overflow: 'hidden',
 }));
 const authDialog = ref(false);
 const openAuthDialog = () => (authDialog.value = true);
+// 로그아웃
 const handleLogout = async () => {
   await logout();
   $q.notify(t('message.1013'));
@@ -73,6 +83,8 @@ const { execute: updateOptions } = useAsyncState(updateUserOptions, null, {
     $q.notify(t('message.1015'));
   },
 });
+
+// 다국어 관련
 const language = ref(authStore.user?.language);
 watch(
   () => authStore.user?.language,
@@ -82,25 +94,39 @@ watch(
     }
   },
 );
-const handleSubmit = newLang => {
+const optionSubmit = newLang => {
   optionDialog.value = false;
   locale.value = newLang;
   updateOptions(0, authStore.user?.uid, { language: newLang });
 };
 </script>
 <style lang="scss">
+header {
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
 .main-layout {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   height: 100vh;
+  overflow: hidden;
+}
+.content-section {
+  flex: 1 1 auto;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+footer {
+  height: 250px;
 }
 </style>
-
 <style lang="scss" scoped>
-.container-wrap {
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll;
+@media (max-width: 1080px) {
+  .content-section {
+    margin: 10px 10px;
+  }
 }
 </style>
