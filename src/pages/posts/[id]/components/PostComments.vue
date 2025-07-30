@@ -40,6 +40,7 @@
                 ? authStore.user?.photoURL
                 : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd2NAjCcjjk7ac57mKCQvgWVTmP0ysxnzQnQ&s'
             "
+            alt="사용자 아바타 이미지"
           />
         </q-avatar>
         <div class="text-grey-6 q-ml-md">{{ $t('message.1018') }}</div>

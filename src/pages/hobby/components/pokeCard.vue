@@ -6,6 +6,12 @@
     @mouseleave="resetCard"
   >
     <div class="card" :style="cardStyle">
+      <img
+        :src="props.imageUrl"
+        alt="포켓몬 카드 이미지"
+        loading="lazy"
+        class="card-img"
+      />
       <div class="overlay" ref="overlayRef"></div>
     </div>
   </div>
@@ -32,11 +38,11 @@ const px = val =>
     : `${val}`;
 
 const cardStyle = computed(() => ({
-  backgroundImage: `url(${props.imageUrl})`,
   width: px(props.width),
   height: px(props.height),
   borderRadius: px(props.borderRadius),
-  backgroundSize: '100% 100%',
+  // backgroundImage: `url(${props.imageUrl})`,
+  // backgroundSize: '100% 100%',
 }));
 
 // const rect = cardRef.value.getBoundingClientRect();
@@ -87,6 +93,13 @@ onMounted(() => {
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  border-radius: inherit;
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   border-radius: inherit;
 }
 

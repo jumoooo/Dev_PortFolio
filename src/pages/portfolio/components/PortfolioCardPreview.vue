@@ -1,5 +1,5 @@
 <template>
-  <img class="front-img" :src="imgLink" />
+  <img class="front-img" :src="imgLink" alt="앞면 이미지" />
   <div class="front-title flex">
     <p>{{ $t(title) }}</p>
     <strong>{{ $t(category) }}</strong>

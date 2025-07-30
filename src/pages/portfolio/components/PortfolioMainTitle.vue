@@ -21,12 +21,9 @@
   justify-content: center;
   align-items: center;
   color: #fff;
-  background-image: linear-gradient(
-      to top left,
-      rgb(201, 110, 149, 0.7),
-      rgb(243, 221, 208, 0.8)
-    ),
-    url('/portfolio_title_backimg.svg'); // SVG 배경 이미지
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/assets/main_banner.png'); // SVG 배경 이미지
 }
 .title-text {
   display: flex;

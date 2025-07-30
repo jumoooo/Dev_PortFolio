@@ -11,7 +11,7 @@
     <q-card class="option-wrap column">
       <q-toolbar>
         <q-avatar style="width: 30px; height: 30px">
-          <img src="https://cdn-icons-png.flaticon.com/128/17/17789.png" />
+          <img src="https://cdn-icons-png.flaticon.com/128/17/17789.png" alt="옵션 아이콘 이미지"/>
         </q-avatar>
         <q-toolbar-title>{{ $t('option') }}</q-toolbar-title>
         <q-btn v-close-popup flat round dense icon="close" />

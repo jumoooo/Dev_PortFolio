@@ -2,7 +2,7 @@
   <q-toolbar>
     <q-btn flat dense to="/">
       <q-toolbar-title class="flex flex-center">
-        <img class="main_logo" src="/assets/main_logo.png" />
+        <img class="main_logo" src="/assets/main_logo.png" alt="헤더 로고" />
         <span class="title-text" v-if="!isMobileScreen"
           >코드로 완성한 픽셀</span
         >
@@ -15,9 +15,9 @@
         <q-tooltip v-if="isMobileScreen"> {{ $t('home') }} </q-tooltip>
         <q-icon name="home" v-if="isMobileScreen" />
       </q-btn>
-      <q-btn stretch flat to="/portfolio">
-        <span v-if="!isMobileScreen">{{ $t('portfolio') }}</span>
-        <q-tooltip v-if="isMobileScreen"> {{ $t('portfolio') }} </q-tooltip>
+      <q-btn stretch flat to="/board">
+        <span v-if="!isMobileScreen">{{ $t('board') }}</span>
+        <q-tooltip v-if="isMobileScreen"> {{ $t('board') }} </q-tooltip>
         <q-icon name="assignment" v-if="isMobileScreen" />
       </q-btn>
       <q-btn stretch flat>
@@ -56,6 +56,7 @@
             authStore.user.photoURL ||
             generateDefaultPhotoURL(authStore.user.uid)
           "
+          alt="계정 이미지"
         />
       </q-avatar>
       <q-menu>

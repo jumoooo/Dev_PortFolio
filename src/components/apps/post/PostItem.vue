@@ -2,7 +2,7 @@
   <q-item class="bg-white q-pt-md" clickable :to="`/posts/${item.id}`">
     <q-item-section avatar top>
       <q-avatar>
-        <img :src="postUser?.photoURL" alt="사용자 아바타" />
+        <img :src="postUser?.photoURL" alt="사용자 아바타 이미지" />
       </q-avatar>
     </q-item-section>
     <q-item-section>

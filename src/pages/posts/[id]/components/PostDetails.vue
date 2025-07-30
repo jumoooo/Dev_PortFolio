@@ -32,7 +32,7 @@
     </div>
     <div class="flex items=center">
       <q-avatar>
-        <img :src="postUser?.photoURL" />
+        <img :src="postUser?.photoURL" alt="사용자 아바타 이미지" />
       </q-avatar>
       <div class="q-ml-md">
         <div>{{ postUser.displayName }}</div>
