@@ -29,6 +29,9 @@
             <q-item clickable v-close-popup to="/pokeCardPage">
               <q-item-section>{{ $t('poke-card') }}</q-item-section>
             </q-item>
+            <!-- <q-item clickable v-close-popup to="/chatbot">
+              <q-item-section>{{ $t('chatbot') }}</q-item-section>
+            </q-item> -->
           </q-list>
         </q-menu>
       </q-btn>

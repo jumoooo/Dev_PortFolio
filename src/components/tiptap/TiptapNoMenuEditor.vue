@@ -1,0 +1,83 @@
+<template>
+  <q-card class="tiptap" flat bordered>
+    <editor-content class="editor__content" :editor="editor" />
+  </q-card>
+</template>
+
+<script setup>
+import { watch } from 'vue';
+import { useEditor, EditorContent } from '@tiptap/vue-3';
+import StarterKit from '@tiptap/starter-kit';
+import Placeholder from '@tiptap/extension-placeholder';
+import TiptapEditorMenu from './TiptapEditorMenu.vue';
+import Link from '@tiptap/extension-link';
+import Image from '@tiptap/extension-image';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: '',
+  },
+  placeholder: {
+    type: String,
+    default: '',
+  },
+});
+//t('message.1012')
+const emit = defineEmits(['update:modelValue']);
+
+const editor = useEditor({
+  content: props.modelValue,
+  extensions: [
+    StarterKit,
+    Placeholder.configure({
+      placeholder:
+        props.placeholder == '' ? t('message.1012') : props.placeholder, // 마크다운을 이용해서 편리하게 글을 작성하세요.
+    }),
+    Link,
+    Image,
+  ],
+  onUpdate: () => {
+    emit('update:modelValue', editor.value.getHTML());
+  },
+});
+
+watch(
+  () => props.modelValue,
+  value => {
+    const isSame = editor.value.getHTML() === value;
+    if (isSame) {
+      return;
+    }
+    editor.value.commands.setContent(value, false);
+  },
+);
+</script>
+<style lang="scss" src="src/css/tiptap.scss"></style>
+<style lang="scss">
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+</style>
+<style lang="scss" scoped>
+.editor__content {
+  flex: 1;
+  display: flex;
+  overflow-y: auto;
+  // padding: 5px 20px;
+  padding: 5px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  height: 100%;
+}
+.tiptap {
+  background-color: transparent;
+  border: none;
+}
+</style>
