@@ -78,6 +78,7 @@
                       :title="data['title']"
                       :category="data['category']"
                       :detailContents="data['detailContents']"
+                      :detailID="'Board'"
                     />
                   </template>
                 </Flipper>
@@ -115,7 +116,7 @@ let detailDatas = [
       {
         id: 2,
         type: 'div',
-        content: 'message.1028', // 인프런 Vue 3 강좌 참고
+        content: 'message.1083', // LightHouse 기준 테스트 완료 (평균 95점 이상)
       },
       {
         id: 3,
@@ -128,7 +129,7 @@ let detailDatas = [
         content: 'https://thehamo.com/',
       },
       {
-        id: 4,
+        id: 5,
         type: 'a',
         content: 'https://github.com/jumoooo/Dev_PortFolio',
       },
@@ -233,7 +234,7 @@ strong {
 }
 
 .figure-link-wrapper {
-  display: block; /* router-link가 figure의 공간을 완전히 차지하도록 */
+  display: block;
   height: 100%;
   width: 100%;
   text-decoration: none; /* 링크의 밑줄 제거 */

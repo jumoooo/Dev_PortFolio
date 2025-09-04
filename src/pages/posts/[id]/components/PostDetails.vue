@@ -8,6 +8,7 @@
         dense
         color="grey"
         size="16px"
+        aria-label="Back"
         @click="$router.back()"
       />
       <q-space />
@@ -18,6 +19,7 @@
         dense
         color="red"
         size="16px"
+        aria-label="Favorite"
         @click="toggleLike"
       />
       <q-btn
@@ -27,6 +29,7 @@
         dense
         color="blue"
         size="16px"
+        aria-label="Bookmark"
         @click="toggleBookmark"
       />
     </div>

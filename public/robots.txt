@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /mypage
+
+Sitemap: https://thehamo.com/sitemap.xml

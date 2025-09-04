@@ -56,6 +56,8 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      minify: true, // js 압축 활성화
+      sourcemap: false, // 디버깅용 소스맵 생성 여부 (배포시에 false 가 좋음)
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
         node: 'node16',

@@ -39,13 +39,13 @@
     "1032": "Interaction Exercise page",
 
     "1033": "Company introduction",
-    "1034": "Small and medium-sized businesses providing, consulting, system construction, and operational management of Smart Factory solutions",
+    "1034": "Founded in 2016, Lisner is a small and medium-sized company serving the supply, consulting, system construction, and operation management of Smart Factory solutions and has strengths in building an integrated production management and monitoring environment that encompasses MES and WEB systems.",
     "1035": "Service",
     "1036": "Smart Factory Framework to monitor manufacturing sites and manage processes and manufacturing based on real-time data",
     "1037": "Conduct factory operation status and factory activity instruction based on accurate real-time data",
     "1038": "WEB-Based Smart Factory Framework",
     "1039": "SCM solution (request for ordering materials, related to full product shipment)",
-    "1040": "Project",
+    "1040": "Project carried out by oneself",
     "1041": "Developing the Changseong MES",
     "1042": "Contribution : 20%",
     "1043": "Dispatch to Pyeongtaek Changseong",
@@ -88,7 +88,8 @@
 
     "1080": "* ex : Ditto",
     "1081": "Search by Pokémon Name",
-    "1082": "Searchable in English"
+    "1082": "Searchable in English",
+    "1083": "LightHouse reference test completed (average score of 95 or higher)"
   },
   "...": "",
   "ko": "Korean",

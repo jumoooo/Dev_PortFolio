@@ -29,6 +29,7 @@
           round
           color="grey"
           @click="execute"
+          aria-label="Research"
         />
       </q-card-section>
       <q-card-section class="q-pb-sm">

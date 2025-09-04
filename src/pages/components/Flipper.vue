@@ -26,7 +26,7 @@
 
 /* 마우스 오버 시 뒤집기 */
 .flip-container:hover .flipper {
-  transform: rotateY(-180deg); /* Y축으로 -180도 회전 (우에서 좌로 뒤집기) */
+  transform: rotateY(-180deg);
 }
 
 .flip-box-front,
@@ -35,7 +35,6 @@
   height: 100%;
   padding: 20px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
   border-radius: 3px;
@@ -47,18 +46,17 @@
 
 .flip-box-front {
   color: black;
+  justify-content: center;
+  // transform: rotateY(180deg);
   transform: rotateY(0deg);
 }
 .flip-box-back {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   transform: rotateY(180deg);
+  // transform: rotateY(0deg);
   .detail-content {
     flex-direction: column;
     div {
       display: flex;
-      justify-content: flex-start;
     }
   }
 }
