@@ -17,6 +17,11 @@ Vue3의 Composition API와 Quasar 프레임워크의 컴포넌트 기반 UI 시�
 - **Pokémon TCG API** (포켓몬 카드 API)
 - **i18n** (다국어)
 
+## 주요 기능
+- **로그인 / 회원가입**
+- **게시글 CRUD**
+- **태그 기반 검색 및 필터링**
+- **반응형 UI**(모바일 최적화)
 
 ## Install the dependencies
 
