@@ -158,6 +158,44 @@ let detailDatas = [
       },
     ],
   },
+  {
+    imgLink: '/todoList.png',
+    workDate: '2025.08', // 2025.08
+    title: 'Next.js Todo List App', // 간단한 Todo List 앱
+    category: 'message.1030', // 개인 프로젝트
+    detailContents: [
+      {
+        id: 1,
+        type: 'div',
+        content: 'Toy Project', // 토이 프로젝트
+      },
+      {
+        id: 2,
+        type: 'div',
+        content: 'message.1085', // 할 일 조회, 추가, 변경, 삭제 가능
+      },
+      {
+        id: 3,
+        type: 'div',
+        content: 'message.1084', // Next.js 공부 내용 참고하여 만든 페이지
+      },
+      {
+        id: 4,
+        type: 'div',
+        content: 'Next.js, React, Css, Vercel',
+      },
+      {
+        id: 5,
+        type: 'a',
+        content: 'https://codeit-todo-list-five.vercel.app/',
+      },
+      {
+        id: 6,
+        type: 'a',
+        content: 'https://github.com/jumoooo/Todo-List/',
+      },
+    ],
+  },
 ];
 const detailData = ref(detailDatas);
 </script>

@@ -89,7 +89,10 @@
     "1080": "* ex : Ditto",
     "1081": "Search by Pokémon Name",
     "1082": "Searchable in English",
-    "1083": "LightHouse reference test completed (average score of 95 or higher)"
+    "1083": "LightHouse reference test completed (average score of 95 or higher)",
+
+    "1084": "Next.js A page made with reference to your study",
+    "1085": "To-do inquiry, add, change, delete"
   },
   "...": "",
   "ko": "Korean",
