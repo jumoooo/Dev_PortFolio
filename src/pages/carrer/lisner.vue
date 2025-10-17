@@ -317,7 +317,7 @@ li {
   max-width: 1140px !important;
   margin: 0 auto;
   section {
-    margin-top: 60px;
+    margin-top: 30px;
   }
 }
 .section-intro {

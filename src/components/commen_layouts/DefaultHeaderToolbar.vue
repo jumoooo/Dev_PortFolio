@@ -20,7 +20,7 @@
         <q-tooltip v-if="isMobileScreen"> {{ $t('board') }} </q-tooltip>
         <q-icon name="assignment" v-if="isMobileScreen" />
       </q-btn>
-      <q-btn stretch flat>
+      <!-- <q-btn stretch flat>
         <span v-if="!isMobileScreen">{{ $t('hobby') }}</span>
         <q-tooltip v-if="isMobileScreen"> {{ $t('hobby') }} </q-tooltip>
         <q-icon name="sports_esports" v-if="isMobileScreen" />
@@ -29,12 +29,12 @@
             <q-item clickable v-close-popup to="/pokeCardPage">
               <q-item-section>{{ $t('poke-card') }}</q-item-section>
             </q-item>
-            <!-- <q-item clickable v-close-popup to="/chatbot">
+            <q-item clickable v-close-popup to="/chatbot">
               <q-item-section>{{ $t('chatbot') }}</q-item-section>
-            </q-item> -->
+            </q-item>
           </q-list>
         </q-menu>
-      </q-btn>
+      </q-btn> -->
     </div>
     <q-separator vertical class="q-my-md q-mr-md" />
     <q-btn

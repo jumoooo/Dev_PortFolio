@@ -135,29 +135,29 @@ let detailDatas = [
       },
     ],
   },
-  {
-    imgLink: '/assets/poke/pokeCard.jpg',
-    workDate: 'message.1029', // 2025.04 ~ 현재
-    title: 'Poke Card Interaction Page',
-    category: 'message.1030', // 개인 프로젝트
-    detailContents: [
-      {
-        id: 1,
-        type: 'div',
-        content: 'message.1031', // 포켓몬 TCG API 활용
-      },
-      {
-        id: 2,
-        type: 'div',
-        content: 'message.1032', // 인터렉션 연습 페이지
-      },
-      {
-        id: 3,
-        type: 'a',
-        content: 'https://thehamo.com/pokeCardPage',
-      },
-    ],
-  },
+  // {
+  //   imgLink: '/assets/poke/pokeCard.jpg',
+  //   workDate: 'message.1029', // 2025.04 ~ 현재
+  //   title: 'Poke Card Interaction Page',
+  //   category: 'message.1030', // 개인 프로젝트
+  //   detailContents: [
+  //     {
+  //       id: 1,
+  //       type: 'div',
+  //       content: 'message.1031', // 포켓몬 TCG API 활용
+  //     },
+  //     {
+  //       id: 2,
+  //       type: 'div',
+  //       content: 'message.1032', // 인터렉션 연습 페이지
+  //     },
+  //     {
+  //       id: 3,
+  //       type: 'a',
+  //       content: 'https://thehamo.com/pokeCardPage',
+  //     },
+  //   ],
+  // },
   {
     imgLink: '/todoList.png',
     workDate: '2025.08', // 2025.08
@@ -269,6 +269,12 @@ strong {
 .flip-container {
   min-height: 300px;
   perspective: 1000px;
+}
+#about a {
+  transition: filter 0.2s ease-in-out;
+}
+#about a:hover {
+  filter: brightness(0.5);
 }
 
 .figure-link-wrapper {

@@ -1,4 +1,5 @@
 # [Dev_PortFolio] Vue3 Quasar Firebase 포트폴리오
+
 이 프로젝트는 제 개발 이력을 소개하고, 공부한 내용을 정리한 공간(Notion)과 GitHub 활동을 연결하는 대시보드 형태의 포트폴리오입니다.
 
 Vue3의 Composition API와 Quasar 프레임워크의 컴포넌트 기반 UI 시스템을 활용하였고, Firebase Hosting을 통해 배포하였습니다.
@@ -14,14 +15,20 @@ Vue3의 Composition API와 Quasar 프레임워크의 컴포넌트 기반 UI 시�
 - **Algoli** (검색)
 
 ## 사용 API 및 모듈
+
 - **Pokémon TCG API** (포켓몬 카드 API)
 - **i18n** (다국어)
 
 ## 주요 기능
+
 - **로그인 / 회원가입**
 - **게시글 CRUD**
 - **태그 기반 검색 및 필터링**
 - **반응형 UI**(모바일 최적화)
+
+## 기타
+
+- **각 페이지 Ligthhouse 90점 이상**
 
 ## Install the dependencies
 
