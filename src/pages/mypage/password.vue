@@ -1,42 +1,31 @@
 <template>
-  <BaseCard>
-    <q-form @submit.prevent="handleSubmit">
-      <q-card-section class="q-gutter-y-md">
-        <div class="text-h6">{{ $t('change-password') }}</div>
-        <q-input
-          v-model="form.newPassword"
-          type="password"
-          outlined
-          dense
-          :label="t('new-password')"
-        />
-        <q-input
-          v-model="form.newPasswordconfirm"
-          type="password"
-          outlined
-          dense
-          :label="t('check-the-new-password')"
-        />
-      </q-card-section>
-      <q-separator />
-      <q-card-actions>
-        <q-space />
-        <q-btn
-          type="submit"
-          :label="t('save_01')"
-          flat
-          color="primary"
-          :loading="isLoading"
-        />
-      </q-card-actions>
-    </q-form>
-  </BaseCard>
+  <SettingFormCard
+    :title="$t('change-password')"
+    :loading="isLoading"
+    :submit-label="t('save_01')"
+    @submit="handleSubmit"
+  >
+    <q-input
+      v-model="form.newPassword"
+      type="password"
+      outlined
+      dense
+      :label="t('new-password')"
+    />
+    <q-input
+      v-model="form.newPasswordconfirm"
+      type="password"
+      outlined
+      dense
+      :label="t('check-the-new-password')"
+    />
+  </SettingFormCard>
 </template>
 
 <script setup>
 import { useQuasar } from 'quasar';
 import { useAsyncState } from '@vueuse/core';
-import BaseCard from 'src/components/base/BaseCard.vue';
+import SettingFormCard from 'src/components/base/SettingFormCard.vue';
 import { updateUserPassword } from 'src/services';
 import { ref } from 'vue';
 import { getErrorMessage } from 'src/utils/firebase/error-message';

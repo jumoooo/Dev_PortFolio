@@ -135,7 +135,7 @@ const { execute: executeDeletePost } = useAsyncState(deletePost, null, {
   throwError: true,
   onSuccess: () => {
     $q.notify(t('message.1016')); // 삭제 완료.
-    router.push('/board');
+    router.push('/'); // 게시판(홈)으로 이동
   },
 });
 const handleDeletePost = async () => {

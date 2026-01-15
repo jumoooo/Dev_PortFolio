@@ -9,6 +9,9 @@ firebase/node_modules/
 dist/
 .cursor/
 
+# Test coverage
+coverage/
+
 # Cordova related directories and files
 /src-cordova/node_modules
 /src-cordova/platforms

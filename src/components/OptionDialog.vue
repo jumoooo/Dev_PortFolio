@@ -1,7 +1,6 @@
 <template>
   <q-dialog
     class="modal"
-    persistent
     v-bind="$attrs"
     @hide="onHide"
     transition-show="none"

@@ -56,6 +56,7 @@ const form = ref(getInittialForm());
 const onHide = () => {
   form.value = getInittialForm();
 };
+
 const { isLoading, execute } = useAsyncState(createPost, null, {
   immediate: false,
   throwError: true,

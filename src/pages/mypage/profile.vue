@@ -1,54 +1,35 @@
 <template>
   <div class="q-gutter-y-md">
-    <BaseCard>
-      <q-form @submit.prevent="handleSubmitProfile">
-        <q-card-section class="q-gutter-y-md">
-          <div class="text-h6">{{ $t('change-profile') }}</div>
-          <q-input
-            v-model="displayName"
-            outlined
-            dense
-            :label="t('nickname')"
-          />
-        </q-card-section>
-        <q-separator />
-        <q-card-actions>
-          <q-space />
-          <q-btn
-            type="submit"
-            :label="t('save_01')"
-            flat
-            color="primary"
-            :loading="isLoadingProfile"
-          />
-        </q-card-actions>
-      </q-form>
-    </BaseCard>
-    <BaseCard>
-      <q-form @submit.prevent="handleSubmitEmail">
-        <q-card-section class="q-gutter-y-md">
-          <div class="text-h6">{{ $t('change-email') }}</div>
-          <q-input v-model="email" outlined dense :label="t('email')" />
-        </q-card-section>
-        <q-separator />
-        <q-card-actions>
-          <q-space />
-          <q-btn
-            type="submit"
-            :label="t('save_01')"
-            flat
-            color="primary"
-            :loading="isLoadingEmail"
-          />
-        </q-card-actions>
-      </q-form>
-    </BaseCard>
+    <!-- 프로필 변경 폼 -->
+    <SettingFormCard
+      :title="$t('change-profile')"
+      :loading="isLoadingProfile"
+      :submit-label="t('save_01')"
+      @submit="handleSubmitProfile"
+    >
+      <q-input
+        v-model="displayName"
+        outlined
+        dense
+        :label="t('nickname')"
+      />
+    </SettingFormCard>
+
+    <!-- 이메일 변경 폼 -->
+    <SettingFormCard
+      :title="$t('change-email')"
+      :loading="isLoadingEmail"
+      :submit-label="t('save_01')"
+      @submit="handleSubmitEmail"
+    >
+      <q-input v-model="email" outlined dense :label="t('email')" />
+    </SettingFormCard>
   </div>
 </template>
 
 <script setup>
 import { useQuasar } from 'quasar';
-import BaseCard from 'src/components/base/BaseCard.vue';
+import SettingFormCard from 'src/components/base/SettingFormCard.vue';
 import { useAsyncState } from '@vueuse/core';
 import { updateuserEmail, updateuserProfile } from 'src/services';
 import { useAuthStore } from 'src/stores/auth';

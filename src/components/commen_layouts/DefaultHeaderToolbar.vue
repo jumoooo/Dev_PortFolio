@@ -11,14 +11,14 @@
     <q-space />
     <div class="right-btn-wrap">
       <q-btn stretch flat to="/">
-        <span v-if="!isMobileScreen">{{ $t('home') }}</span>
-        <q-tooltip v-if="isMobileScreen"> {{ $t('home') }} </q-tooltip>
-        <q-icon name="home" v-if="isMobileScreen" />
-      </q-btn>
-      <q-btn stretch flat to="/board">
         <span v-if="!isMobileScreen">{{ $t('board') }}</span>
         <q-tooltip v-if="isMobileScreen"> {{ $t('board') }} </q-tooltip>
         <q-icon name="assignment" v-if="isMobileScreen" />
+      </q-btn>
+      <q-btn stretch flat to="/about">
+        <span v-if="!isMobileScreen">{{ $t('about') }}</span>
+        <q-tooltip v-if="isMobileScreen"> {{ $t('about') }} </q-tooltip>
+        <q-icon name="info" v-if="isMobileScreen" />
       </q-btn>
       <!-- <q-btn stretch flat>
         <span v-if="!isMobileScreen">{{ $t('hobby') }}</span>
