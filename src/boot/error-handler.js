@@ -5,6 +5,12 @@ import { getErrorMessage } from 'src/utils/firebase/error-message';
 export default boot(async ({ app }) => {
   // 전역 에러 핸들러
   app.config.errorHandler = (err, instance, info) => {
+    // Firebase 인증 에러는 컴포넌트에서 이미 처리되므로 무시
+    // (컴포넌트의 onError에서 이미 사용자에게 표시됨)
+    if (err?.code && err.code.startsWith('auth/')) {
+      return; // 에러 처리하지 않고 종료
+    }
+
     // Firebase 관련 에러인 경우 특화된 메시지 표시
     if (err.code) {
       Notify.create({
@@ -33,7 +39,15 @@ export default boot(async ({ app }) => {
 
   // 처리되지 않은 Promise rejection 캐치
   window.addEventListener('unhandledrejection', event => {
-    console.error('처리되지 않은 Promise 에러:', event.reason);
+    const reason = event.reason;
+
+    // Firebase 인증 에러는 컴포넌트에서 이미 처리되므로 무시
+    if (reason?.code && reason.code.startsWith('auth/')) {
+      event.preventDefault(); // 기본 동작 방지
+      return;
+    }
+
+    console.error('처리되지 않은 Promise 에러:', reason);
 
     Notify.create({
       type: 'negative',

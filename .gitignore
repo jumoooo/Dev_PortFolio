@@ -7,7 +7,9 @@ firebase/node_modules/
 # Quasar core related directories
 .quasar
 dist/
+firebase/dist/
 .cursor/
+.cursorrules
 
 # Test coverage
 coverage/

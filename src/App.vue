@@ -16,6 +16,12 @@ onErrorCaptured((err, instance, info) => {
     info,
   });
 
+  // Firebase 인증 에러는 이미 컴포넌트에서 처리되므로 무시
+  // (auth/wrong-password, auth/user-not-found 등은 이미 사용자에게 표시됨)
+  if (err?.code && err.code.startsWith('auth/')) {
+    return false; // 에러 전파 중지하지만 알림은 표시하지 않음
+  }
+
   // 사용자에게 친화적인 에러 메시지 표시
   $q.notify({
     type: 'negative',
