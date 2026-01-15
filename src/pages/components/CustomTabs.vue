@@ -84,9 +84,11 @@
                           {{ $t(img['imgTitle']) }}
                         </h2>
 
+                        <!-- Native lazy loading 적용 (성능 최적화) -->
                         <img
                           class="inner-img"
                           :src="img['imgLink']"
+                          loading="lazy"
                           @click="$emit('clickImage', img['imgLink'])"
                         />
                       </template>

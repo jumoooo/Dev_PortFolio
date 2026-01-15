@@ -1,7 +1,8 @@
 <!-- 로고 및 이미지 링크 -->
 <template>
   <figure class="custom-figure flex flex-center">
-    <img :src="imageLink" :alt="alt" />
+    <!-- Native lazy loading 적용 (성능 최적화) -->
+    <img :src="imageLink" :alt="alt" loading="lazy" />
     <figcaption v-if="caption">{{ caption }}</figcaption>
   </figure>
 </template>

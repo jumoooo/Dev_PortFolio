@@ -8,14 +8,15 @@ import { getStorage } from 'firebase/storage';
 import { useAuthStore } from 'src/stores/auth';
 // import i18n from 'src/utils/i18n/i18n'; // <-- 여기서 i18n 인스턴스를 직접 가져옴
 
+// 환경변수에서 Firebase 설정 가져오기
 const firebaseConfig = {
-  apiKey: 'AIzaSyA75UioB4LkxZBOmmJhIvUvRjfUrySC6nk',
-  authDomain: 'kjm01-vue3-firebase-app-c56f7.firebaseapp.com',
-  projectId: 'kjm01-vue3-firebase-app-c56f7',
-  storageBucket: 'kjm01-vue3-firebase-app-c56f7.firebasestorage.app',
-  messagingSenderId: '1093570967237',
-  appId: '1:1093570967237:web:b05e745dd9d30813b522ac',
-  measurementId: 'G-RFLEFK40QF',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

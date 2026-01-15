@@ -16,7 +16,6 @@ import {
   limit,
   increment,
 } from 'firebase/firestore';
-import bookmark from 'src/pages/mypage/bookmark.vue';
 import { getUserById } from './user';
 
 // 생성
@@ -157,16 +156,42 @@ export async function hasBookmark(uid, postId) {
 }
 
 export async function getUserBookmarks(uid) {
+  // 북마크 목록 조회 (정렬 순서 유지)
   const q = query(
     collection(db, 'users', uid, 'bookmarks'),
     orderBy('createdAt', 'desc'),
     limit(6),
   );
   const querySnapshot = await getDocs(q);
+  const bookmarkIds = querySnapshot.docs.map(doc => doc.id);
 
-  return Promise.all(
-    querySnapshot.docs.map(bookmarkDoc => getPost(bookmarkDoc.id)),
+  // 북마크가 없으면 빈 배열 반환
+  if (bookmarkIds.length === 0) {
+    return [];
+  }
+
+  // 모든 게시글을 한 번에 조회 (N+1 문제 해결)
+  const postsQuery = query(
+    collection(db, 'posts'),
+    where('__name__', 'in', bookmarkIds),
   );
+  const postsSnapshot = await getDocs(postsQuery);
+
+  // 게시글을 Map으로 변환 (빠른 조회)
+  const postsMap = new Map();
+  postsSnapshot.docs.forEach(doc => {
+    const data = doc.data();
+    postsMap.set(doc.id, {
+      id: doc.id,
+      ...data,
+      createdAt: data.createdAt?.toDate(),
+    });
+  });
+
+  // 북마크 순서대로 게시글 반환 (존재하는 것만)
+  return bookmarkIds
+    .map(id => postsMap.get(id))
+    .filter(post => post !== undefined);
 }
 //#endregion "북마크 기능"
 

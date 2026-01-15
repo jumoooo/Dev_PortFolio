@@ -93,9 +93,14 @@ import { useLike } from 'src/composables/useLike';
 import { useBookmark } from 'src/composables/useBookmark';
 import { useI18n } from 'vue-i18n';
 
+import { defineAsyncComponent } from 'vue';
 import PostIcon from 'src/components/apps/post/PostIcon.vue';
 import BaseCard from 'src/components/base/BaseCard.vue';
-import TiptapViewer from 'src/components/tiptap/TiptapViewer.vue';
+
+// Tiptap Viewer lazy loading (성능 최적화)
+const TiptapViewer = defineAsyncComponent(() =>
+  import('src/components/tiptap/TiptapViewer.vue'),
+);
 
 const { t } = useI18n();
 
@@ -130,7 +135,7 @@ const { execute: executeDeletePost } = useAsyncState(deletePost, null, {
   throwError: true,
   onSuccess: () => {
     $q.notify(t('message.1016')); // 삭제 완료.
-    router.push('/');
+    router.push('/board');
   },
 });
 const handleDeletePost = async () => {

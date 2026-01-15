@@ -62,9 +62,13 @@ import { getCategories } from 'src/services/category';
 import { validateRequired } from 'src/utils/validate-rules';
 import { useQuasar } from 'quasar';
 import { useTag } from 'src/composables/useTag';
+import { defineAsyncComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-import TiptapEditor from 'src/components/tiptap/TiptapEditor.vue';
+// Tiptap Editor lazy loading (성능 최적화)
+const TiptapEditor = defineAsyncComponent(() =>
+  import('src/components/tiptap/TiptapEditor.vue'),
+);
 
 const { t } = useI18n();
 

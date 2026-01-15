@@ -23,11 +23,16 @@
 </template>
 
 <script setup>
-import AuthDialog from 'src/components/auth/AuthDialog.vue';
-import OptionDialog from '../components/OptionDialog.vue';
+// 다이얼로그 컴포넌트는 필요할 때만 로드 (lazy loading)
+import { defineAsyncComponent, computed, ref, watch } from 'vue';
 import DefaultHeaderToolbar from 'src/components/commen_layouts/DefaultHeaderToolbar.vue';
 
-import { computed, ref, watch } from 'vue';
+const AuthDialog = defineAsyncComponent(() =>
+  import('src/components/auth/AuthDialog.vue'),
+);
+const OptionDialog = defineAsyncComponent(() =>
+  import('../components/OptionDialog.vue'),
+);
 import { useRoute } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
 import { logout, sendVerificationEmail } from 'src/services';
